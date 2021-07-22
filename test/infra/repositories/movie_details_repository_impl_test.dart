@@ -35,4 +35,12 @@ void main() {
     expect(result, Right(kMovieDetailsModel));
     verify(() => datasource.getMovieDetails(any()));
   });
+  test(
+      'should return a ServerFailure when calls to datasource throws a ServerException',
+      () async {
+    when(() => datasource.getMovieDetails(any())).thenThrow(ServerException());
+    final result = await repository.getMovieDetails(kMovieEntity);
+    expect(result, Left(ServerFailure()));
+    verify(() => datasource.getMovieDetails(any()));
+  });
 }

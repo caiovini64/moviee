@@ -13,7 +13,11 @@ class MovieDetailsRepository implements IMovieDetailsRepository {
   @override
   Future<Either<Failure, MovieEntity>> getMovieDetails(
       MovieEntity movie) async {
-    final result = await datasource.getMovieDetails(movie);
-    return Right(result);
+    try {
+      final result = await datasource.getMovieDetails(movie);
+      return Right(result);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 }

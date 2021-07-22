@@ -26,3 +26,11 @@ final kMovieModelList = [
     posterPath: '',
   ),
 ];
+
+final kMovieDetailsModel = MovieDetailsModel(
+  id: 297761,
+  title: '',
+  backdropPath: '',
+  genres: <GenresModel>[],
+  posterPath: '',
+);

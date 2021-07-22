@@ -35,4 +35,11 @@ void main() {
     expect(result, Right(kMovieEntityList));
     verify(() => repository.getMovieRecommendations(any()));
   });
+  test('Should returns a Failure when dont succeed', () async {
+    when(() => repository.getMovieRecommendations(any())).thenAnswer(
+        (_) async => Left<Failure, List<MovieEntity>>(ServerFailure()));
+    final result = await usecase(kMovieEntity);
+    expect(result, Left(ServerFailure()));
+    verify(() => repository.getMovieRecommendations(any()));
+  });
 }

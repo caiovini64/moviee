@@ -1,0 +1,1 @@
+class AccessDeniedException implements Exception {}

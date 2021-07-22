@@ -29,7 +29,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   equatable:
-  dartz:
+  dartz: 0.10.0-nullsafety.2
+  mocktail:
 
 dev_dependencies:
   flutter_test:

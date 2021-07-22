@@ -38,12 +38,22 @@ void main() {
   });
 
   test(
-      'should return a ServerFailure when calls to datasource throws a Server Exception',
+      'should return a ServerFailure when calls to datasource throws a ServerException',
       () async {
     when(() => datasource.getMovieRecommendations(any()))
         .thenThrow(ServerException());
     final result = await repository.getMovieRecommendations(kMovieEntity);
     expect(result, Left(ServerFailure()));
+    verify(() => datasource.getMovieRecommendations(any()));
+  });
+
+  test(
+      'should return a UnexpectedFailure when calls to datasource throws a UnexpectedException',
+      () async {
+    when(() => datasource.getMovieRecommendations(any()))
+        .thenThrow(UnexpectedException());
+    final result = await repository.getMovieRecommendations(kMovieEntity);
+    expect(result, Left(UnexpectedFailure()));
     verify(() => datasource.getMovieRecommendations(any()));
   });
 }

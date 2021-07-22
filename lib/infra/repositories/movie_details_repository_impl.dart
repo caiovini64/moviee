@@ -18,6 +18,8 @@ class MovieDetailsRepository implements IMovieDetailsRepository {
       return Right(result);
     } on ServerException {
       return Left(ServerFailure());
+    } on UnexpectedException {
+      return Left(UnexpectedFailure());
     }
   }
 }

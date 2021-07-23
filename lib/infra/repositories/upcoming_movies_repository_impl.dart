@@ -12,7 +12,11 @@ class UpcomingMoviesRepository implements IUpcomingMoviesRepository {
 
   @override
   Future<Either<Failure, List<MovieEntity>>> getUpcomingMovies() async {
-    final result = await datasource.getUpcomingMovies();
-    return Right(result);
+    try {
+      final result = await datasource.getUpcomingMovies();
+      return Right(result);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 }

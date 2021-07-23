@@ -2,8 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:moviee/domain/repositories/repositories.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
+import 'package:moviee/domain/helpers/helpers.dart';
+import 'package:moviee/infra/helpers/helpers.dart';
+import 'package:moviee/domain/repositories/repositories.dart';
 import 'package:moviee/infra/repositories/repositories.dart';
 
 import '../../mocks.dart';
@@ -26,6 +28,15 @@ main() {
         .thenAnswer((_) async => kMovieModelList);
     final result = await repository.getUpcomingMovies();
     expect(result, Right(kMovieModelList));
+    verify(() => datasource.getUpcomingMovies());
+  });
+
+  test(
+      'should return a ServerFailure when calls to datasource throws a ServerException',
+      () async {
+    when(() => datasource.getUpcomingMovies()).thenThrow(ServerException());
+    final result = await repository.getUpcomingMovies();
+    expect(result, Left(ServerFailure()));
     verify(() => datasource.getUpcomingMovies());
   });
 }

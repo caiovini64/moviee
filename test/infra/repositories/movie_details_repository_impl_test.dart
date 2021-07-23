@@ -4,6 +4,7 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:moviee/domain/entities/entities.dart';
 import 'package:moviee/domain/helpers/failure/failures.dart';
+import 'package:moviee/domain/repositories/repositories.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
 import 'package:moviee/infra/helpers/exceptions/exceptions.dart';
 import 'package:moviee/infra/repositories/repositories.dart';
@@ -16,7 +17,7 @@ class MockMovieDetailsDatasource extends Mock
 class MovieEntityFake extends Fake implements MovieEntity {}
 
 void main() {
-  late MovieDetailsRepository repository;
+  late IMovieDetailsRepository repository;
   late IMovieDetailsDatasource datasource;
 
   setUpAll(() {

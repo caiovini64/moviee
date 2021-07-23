@@ -5,6 +5,7 @@ import 'package:moviee/domain/entities/entities.dart';
 import 'package:moviee/domain/helpers/failure/failures.dart';
 import 'package:moviee/domain/repositories/repositories.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
+import 'package:moviee/infra/helpers/helpers.dart';
 
 class NowPlayingMoviesRepository implements INowPlayingMoviesRepository {
   final INowPlayingMoviesDatasource datasource;
@@ -12,7 +13,11 @@ class NowPlayingMoviesRepository implements INowPlayingMoviesRepository {
 
   @override
   Future<Either<Failure, List<MovieEntity>>> getNowPlayingMovies() async {
-    final result = await datasource.getNowPlayingMovies();
-    return Right(result);
+    try {
+      final result = await datasource.getNowPlayingMovies();
+      return Right(result);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
   }
 }

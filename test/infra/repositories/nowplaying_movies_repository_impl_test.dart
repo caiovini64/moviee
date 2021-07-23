@@ -30,4 +30,13 @@ main() {
     expect(result, Right(kMovieModelList));
     verify(() => datasource.getNowPlayingMovies());
   });
+
+  test(
+      'should return a ServerFailure when calls to datasource throws a ServerException',
+      () async {
+    when(() => datasource.getNowPlayingMovies()).thenThrow(ServerException());
+    final result = await repository.getNowPlayingMovies();
+    expect(result, Left(ServerFailure()));
+    verify(() => datasource.getNowPlayingMovies());
+  });
 }

@@ -1,6 +1,7 @@
 import 'package:moviee/domain/helpers/failure/failure.dart';
 import 'package:moviee/domain/entities/movie_entity.dart';
 import 'package:dartz/dartz.dart';
+
 import 'package:moviee/domain/helpers/failure/failures.dart';
 import 'package:moviee/domain/repositories/repositories.dart';
 import 'package:moviee/infra/datasources/datasources.dart';

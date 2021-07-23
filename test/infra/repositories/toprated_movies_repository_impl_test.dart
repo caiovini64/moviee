@@ -39,4 +39,13 @@ main() {
     expect(result, Left(ServerFailure()));
     verify(() => datasource.getTopRatedMovies());
   });
+
+  test(
+      'should return a UnexpectedFailure when calls to datasource throws a UnexpectedException',
+      () async {
+    when(() => datasource.getTopRatedMovies()).thenThrow(UnexpectedException());
+    final result = await repository.getTopRatedMovies();
+    expect(result, Left(UnexpectedFailure()));
+    verify(() => datasource.getTopRatedMovies());
+  });
 }

@@ -32,6 +32,7 @@ dependencies:
   dartz: 0.10.0-nullsafety.2
   mocktail:
   http:
+  get_it:
 
 dev_dependencies:
   flutter_test:

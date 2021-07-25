@@ -1,18 +1,18 @@
 import 'dart:convert';
 
-import 'package:moviee/external/helpers/endpoints/endpoints.dart';
+import 'package:moviee/external/helpers/helpers.dart';
 import 'package:moviee/infra/client/connection_client.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
 import 'package:moviee/infra/helpers/exceptions/exceptions.dart';
 import 'package:moviee/infra/models/models.dart';
 
-class NowPlayingMoviesDatasource implements INowPlayingMoviesDatasource {
+class PopularMoviesDatasource implements IPopularMoviesDatasource {
   final IConnectionClient client;
-  NowPlayingMoviesDatasource(this.client);
+  PopularMoviesDatasource(this.client);
 
   @override
-  Future<List<MovieModel>> getNowPlayingMovies() async {
-    final response = await client.get(TMDBEndpoints.movieList('now_playing'));
+  Future<List<MovieModel>> getPopularMovies() async {
+    final response = await client.get(TMDBEndpoints.movieList('popular'));
     if (response.statusCode == 200) {
       final movieList = <MovieModel>[];
       final json = jsonDecode(response.data);

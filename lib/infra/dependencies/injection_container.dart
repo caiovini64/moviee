@@ -2,13 +2,19 @@ import 'package:get_it/get_it.dart';
 
 import 'package:moviee/domain/repositories/repositories.dart';
 import 'package:moviee/domain/usecases/usecases.dart';
+import 'package:moviee/external/client/clients.dart';
 import 'package:moviee/external/datasources/datasources.dart';
+import 'package:moviee/infra/client/clients.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
 import 'package:moviee/infra/repositories/repositories.dart';
+import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 final serviceLocator = GetIt.instance;
 
 void init() {
+  //Controllers
+  serviceLocator.registerLazySingleton(() => HomeController(
+      popularMoviesUsecase: serviceLocator<GetPopularMoviesUsecase>()));
   //Use cases
   serviceLocator.registerLazySingleton(
       () => GetMovieDetailsUsecase(serviceLocator<IMovieDetailsRepository>()));
@@ -50,4 +56,7 @@ void init() {
       () => TopRatedMoviesDatasource(serviceLocator()));
   serviceLocator.registerLazySingleton<IUpcomingMoviesDatasource>(
       () => UpcomingMoviesDatasource(serviceLocator()));
+
+  //Clients
+  serviceLocator.registerLazySingleton<IConnectionClient>(() => HttpClient());
 }

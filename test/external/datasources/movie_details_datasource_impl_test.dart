@@ -25,9 +25,15 @@ void main() {
         ));
   }
 
-  test('Should calls the get method with the correct url', () async {
+  test('should calls the get method with the correct url', () async {
     successMock();
     await datasource.getMovieDetails(kMovieEntity);
     verify(() => client.get(TMDBEndpoints.movieDetails('1'))).called(1);
+  });
+
+  test('should returns a MovieDetailsModel', () async {
+    successMock();
+    final result = await datasource.getMovieDetails(kMovieEntity);
+    expect(result, isA<MovieDetailsModel>());
   });
 }

@@ -5,6 +5,7 @@ import 'package:moviee/external/datasources/datasources.dart';
 import 'package:moviee/external/helpers/endpoints/endpoints.dart';
 import 'package:moviee/infra/client/clients.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
+import 'package:moviee/infra/helpers/helpers.dart';
 import 'package:moviee/infra/models/models.dart';
 
 import '../../mocks.dart';
@@ -35,5 +36,13 @@ void main() {
     successMock();
     final result = await datasource.getMovieDetails(kMovieEntity);
     expect(result, isA<MovieDetailsModel>());
+  });
+
+  test('Should throws a ServerException when the status code was 404',
+      () async {
+    when(() => client.get(any())).thenAnswer((_) async =>
+        HttpResponseModel(data: kMovieDetailsResponse, statusCode: 404));
+    expect(datasource.getMovieDetails(kMovieEntity),
+        throwsA(isA<UnexpectedException>()));
   });
 }

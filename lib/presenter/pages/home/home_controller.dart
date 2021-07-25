@@ -36,7 +36,6 @@ class HomeController extends GetxController {
       },
       (data) {
         _setState(ViewState.done);
-        print(data);
         popularMoviesList.addAll(data);
       },
     );

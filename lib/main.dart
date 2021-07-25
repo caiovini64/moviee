@@ -5,6 +5,7 @@ import 'package:moviee/infra/dependencies/injection_container.dart'
 import 'package:moviee/presenter/helpers/helpers.dart';
 import 'package:moviee/presenter/routes/app_pages.dart';
 import 'package:moviee/presenter/routes/app_routes.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import 'presenter/pages/home/home_page.dart';
 
@@ -17,6 +18,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      builder: (context, widget) {
+        return ResponsiveWrapper.builder(widget,
+            maxWidth: 1024,
+            minWidth: 480,
+            defaultScale: true,
+            breakpoints: [
+              ResponsiveBreakpoint.resize(480, name: MOBILE),
+              ResponsiveBreakpoint.autoScale(800, name: TABLET),
+              ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+            ],
+            background: Container(
+              color: appTheme().backgroundColor,
+            ));
+      },
       title: 'Just Movie it',
       debugShowCheckedModeBanner: false,
       theme: appTheme(),

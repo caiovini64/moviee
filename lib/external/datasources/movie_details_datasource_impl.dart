@@ -19,8 +19,10 @@ class MovieDetailsDatasource implements IMovieDetailsDatasource {
       final json = jsonDecode(response.data);
       final movieDetails = MovieDetailsModel.fromJson(json);
       return movieDetails;
-    } else {
+    } else if (response.statusCode == 404) {
       throw UnexpectedException();
+    } else {
+      throw ServerException();
     }
   }
 }

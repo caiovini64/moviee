@@ -38,11 +38,19 @@ void main() {
     expect(result, isA<MovieDetailsModel>());
   });
 
-  test('Should throws a ServerException when the status code was 404',
+  test('Should throws a UnexpectedException when the status code was 404',
       () async {
     when(() => client.get(any())).thenAnswer((_) async =>
         HttpResponseModel(data: kMovieDetailsResponse, statusCode: 404));
     expect(datasource.getMovieDetails(kMovieEntity),
         throwsA(isA<UnexpectedException>()));
+  });
+
+  test('Should throws a ServerException  when the status code was 401',
+      () async {
+    when(() => client.get(any())).thenAnswer((_) async =>
+        HttpResponseModel(data: kMovieDetailsResponse, statusCode: 401));
+    expect(datasource.getMovieDetails(kMovieEntity),
+        throwsA(isA<ServerException>()));
   });
 }

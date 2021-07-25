@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:moviee/infra/dependencies/injection_container.dart'
+    as dependencies;
 
 void main() {
+  dependencies.init();
   runApp(MyApp());
 }
 

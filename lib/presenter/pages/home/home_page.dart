@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:moviee/presenter/routes/app_pages.dart';
 
 class HomePage extends StatelessWidget {
-  static const route = '/home';
+  static const route = '/';
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

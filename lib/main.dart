@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart'
     as dependencies;
+import 'package:moviee/presenter/helpers/helpers.dart';
 import 'package:moviee/presenter/routes/app_pages.dart';
 import 'package:moviee/presenter/routes/app_routes.dart';
 
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Just Movie it',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.HOME,
+      theme: appTheme(),
+      initialRoute: '/',
       getPages: AppPages.pages,
       home: HomePage(),
     );

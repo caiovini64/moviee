@@ -2,7 +2,6 @@ import 'package:test/test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:moviee/external/datasources/datasources.dart';
-import 'package:moviee/external/helpers/helpers.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
 import 'package:moviee/infra/helpers/helpers.dart';
 import 'package:moviee/infra/models/http_response_model.dart';
@@ -19,14 +18,12 @@ void main() {
     datasource = UpcomingMoviesDatasource(client);
   });
 
-  void successMock() {
-    when(() => client.get(any())).thenAnswer((_) async => HttpResponseModel(
-          data: kMoviesResponse,
-          statusCode: 200,
-        ));
-  }
-
-  final urlExpected = TMDBEndpoints.movieList('upcoming');
+  // void successMock() {
+  //   when(() => client.get(any())).thenAnswer((_) async => HttpResponseModel(
+  //         data: kMoviesResponse,
+  //         statusCode: 200,
+  //       ));
+  // }
 
   // test('Should calls the get method with the correct url', () async {
   //   successMock();

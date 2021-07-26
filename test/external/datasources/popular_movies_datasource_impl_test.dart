@@ -4,7 +4,6 @@ import 'package:mocktail/mocktail.dart';
 
 import 'package:moviee/infra/helpers/exceptions/exceptions.dart';
 import 'package:moviee/external/datasources/datasources.dart';
-import 'package:moviee/external/helpers/endpoints/endpoints.dart';
 import 'package:moviee/infra/models/models.dart';
 import 'package:moviee/infra/client/connection_client.dart';
 
@@ -19,14 +18,12 @@ void main() {
     datasource = PopularMoviesDatasource(client);
   });
 
-  void successMock() {
-    when(() => client.get(any())).thenAnswer((_) async => HttpResponseModel(
-          data: kMoviesResponse,
-          statusCode: 200,
-        ));
-  }
-
-  final urlExpected = TMDBEndpoints.movieList('popular');
+  // void successMock() {
+  //   when(() => client.get(any())).thenAnswer((_) async => HttpResponseModel(
+  //         data: kMoviesResponse,
+  //         statusCode: 200,
+  //       ));
+  // }
 
   // test('Should calls the get method with the correct url', () async {
   //   successMock();

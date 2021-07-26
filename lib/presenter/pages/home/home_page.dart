@@ -1,8 +1,11 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart';
 import 'package:moviee/presenter/components/components.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
+
+import 'widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   static const route = '/';
@@ -16,6 +19,14 @@ class HomePage extends StatelessWidget {
       builder: (_) => Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: CustomAppBar(),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              CarouselHomeWidget(movies: controller.popularMoviesList),
+            ],
+          ),
+        ),
       ),
     );
   }

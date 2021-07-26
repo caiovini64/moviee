@@ -35,7 +35,7 @@ dependencies:
   get_it:
   get:
   responsive_framework:
-  anim_search_bar:
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:

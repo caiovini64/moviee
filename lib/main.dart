@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       builder: (context, widget) {
         return ResponsiveWrapper.builder(widget,
-            maxWidth: 1024,
             minWidth: 480,
             defaultScale: true,
             breakpoints: [

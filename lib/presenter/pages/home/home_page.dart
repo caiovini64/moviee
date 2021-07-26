@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart';
 import 'package:moviee/presenter/components/components.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
+import 'package:responsive_framework/responsive_framework.dart' as responsive;
 
 import 'widgets/widgets.dart';
 
@@ -18,11 +19,17 @@ class HomePage extends StatelessWidget {
       init: controller,
       builder: (_) => Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [],
-          ),
+        body: Row(
+          children: [
+            responsive.ResponsiveVisibility(
+              visible: false,
+              visibleWhen: [
+                responsive.Condition.equals(name: responsive.DESKTOP)
+              ],
+              child: Drawer(),
+            ),
+            Expanded(child: Placeholder()),
+          ],
         ),
       ),
     );

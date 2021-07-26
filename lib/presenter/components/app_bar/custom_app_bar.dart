@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:moviee/presenter/helpers/helpers.dart';
-import 'package:moviee/presenter/helpers/utils/device_type.dart';
+//Named as a route because have a conflict name with responsive framework
+import 'package:get/get.dart' as route;
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:responsive_framework/responsive_value.dart';
 
@@ -43,7 +43,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onTap: () {},
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () => route.Get.toNamed('/search'),
               icon: Icon(
                 Icons.search_sharp,
                 color: Colors.white,

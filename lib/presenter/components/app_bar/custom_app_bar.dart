@@ -19,36 +19,59 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       visibleWhen: [Condition.smallerThan(name: TABLET)],
       child: AppBar(
         title: Text('Just Movie it'),
+        centerTitle: true,
       ),
       replacement: Container(
         height: 400,
         color: Theme.of(context).backgroundColor,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ItemAppBar(
-              title: 'Home',
-              onTap: () {},
-            ),
-            ItemAppBar(
-              title: 'About',
-              onTap: () {},
-            ),
-            ItemAppBar(
-              title: 'Discover',
-              onTap: () {},
-            ),
-            ItemAppBar(
-              title: 'Movies',
-              onTap: () {},
-            ),
-            IconButton(
-              onPressed: () => route.Get.toNamed('/search'),
-              icon: Icon(
-                Icons.search_sharp,
+            Text(
+              'Just Movie it',
+              style: TextStyle(
                 color: Colors.white,
-                size: 20,
               ),
+            ),
+            Row(
+              children: [
+                ItemAppBar(
+                  title: 'Home',
+                  onTap: () {},
+                ),
+                ItemAppBar(
+                  title: 'About',
+                  onTap: () {},
+                ),
+                ItemAppBar(
+                  title: 'Discover',
+                  onTap: () {},
+                ),
+                ItemAppBar(
+                  title: 'Movies',
+                  onTap: () {},
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () => route.Get.toNamed('/search'),
+                  icon: Icon(
+                    Icons.search_sharp,
+                    color: Colors.white,
+                    size: 20,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.account_circle_sharp,
+                    color: Colors.white,
+                    size: 20,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

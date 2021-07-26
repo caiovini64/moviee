@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:moviee/external/datasources/datasources.dart';
-import 'package:moviee/external/helpers/endpoints/endpoints.dart';
 import 'package:moviee/infra/client/clients.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
 import 'package:moviee/infra/helpers/exceptions/exceptions.dart';
@@ -18,14 +17,12 @@ void main() {
     datasource = NowPlayingMoviesDatasource(client);
   });
 
-  void successMock() {
-    when(() => client.get(any())).thenAnswer((_) async => HttpResponseModel(
-          data: kMoviesResponse,
-          statusCode: 200,
-        ));
-  }
-
-  final urlExpected = TMDBEndpoints.movieList('now_playing');
+  // void successMock() {
+  //   when(() => client.get(any())).thenAnswer((_) async => HttpResponseModel(
+  //         data: kMoviesResponse,
+  //         statusCode: 200,
+  //       ));
+  // }
 
   // test('Should calls the get method with the correct url', () async {
   //   successMock();

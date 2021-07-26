@@ -4,7 +4,6 @@ import 'package:moviee/infra/dependencies/injection_container.dart'
     as dependencies;
 import 'package:moviee/presenter/helpers/helpers.dart';
 import 'package:moviee/presenter/routes/app_pages.dart';
-import 'package:moviee/presenter/routes/app_routes.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import 'presenter/pages/home/home_page.dart';

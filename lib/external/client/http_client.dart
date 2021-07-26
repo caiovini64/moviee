@@ -8,12 +8,13 @@ class HttpClient implements IConnectionClient {
   @override
   Future<HttpResponseModel> get(String url) async {
     final http.Response response = await client.get(Uri.parse(url));
-    return HttpResponseModel(data: response.body, statusCode: response.statusCode);
+    return HttpResponseModel(
+        data: response.body, statusCode: response.statusCode);
   }
 
   @override
-  Future<HttpResponseModel> post(String url, {required Map<String, dynamic> body}) {
-    // TODO: implement post
+  Future<HttpResponseModel> post(String url,
+      {required Map<String, dynamic> body}) {
     throw UnimplementedError();
   }
 }

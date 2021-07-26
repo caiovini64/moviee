@@ -1,5 +1,4 @@
 import 'package:moviee/external/datasources/datasources.dart';
-import 'package:moviee/external/helpers/endpoints/endpoints.dart';
 import 'package:moviee/infra/client/clients.dart';
 import 'package:moviee/infra/datasources/datasources.dart';
 import 'package:moviee/infra/helpers/exceptions/exceptions.dart';

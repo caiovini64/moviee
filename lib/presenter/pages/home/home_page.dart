@@ -18,13 +18,10 @@ class HomePage extends StatelessWidget {
       init: controller,
       builder: (_) => Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        appBar: CustomAppBar(),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
-            children: [
-              CarouselHomeWidget(movies: controller.popularMoviesList),
-            ],
+            children: [],
           ),
         ),
       ),

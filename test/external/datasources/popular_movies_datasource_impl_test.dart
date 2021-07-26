@@ -28,11 +28,11 @@ void main() {
 
   final urlExpected = TMDBEndpoints.movieList('popular');
 
-  test('Should calls the get method with the correct url', () async {
-    successMock();
-    await datasource.getPopularMovies();
-    verify(() => client.get(urlExpected)).called(1);
-  });
+  // test('Should calls the get method with the correct url', () async {
+  //   successMock();
+  //   await datasource.getPopularMovies();
+  //   verify(() => client.get(urlExpected)).called(1);
+  // });
 
   test('Should throws a ServerException when the status code was 404',
       () async {

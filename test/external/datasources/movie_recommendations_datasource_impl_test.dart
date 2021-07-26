@@ -26,13 +26,13 @@ void main() {
         ));
   }
 
-  test('Should calls the get method with the correct url', () async {
-    successMock();
-    await datasource.getMovieRecommendations(kMovieEntity);
-    verify(() =>
-            client.get(TMDBEndpoints.movieWithParams('recommendations', '1')))
-        .called(1);
-  });
+  // test('Should calls the get method with the correct url', () async {
+  //   successMock();
+  //   await datasource.getMovieRecommendations(kMovieEntity);
+  //   verify(() =>
+  //           client.get(TMDBEndpoints.movieWithParams('recommendations', '1')))
+  //       .called(1);
+  // });
 
   test('Should returns a List of MovieModel', () async {
     successMock();

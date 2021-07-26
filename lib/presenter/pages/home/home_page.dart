@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
+import 'package:moviee/presenter/pages/home/widgets/side_bar_widget.dart';
 import 'package:responsive_framework/responsive_framework.dart' as responsive;
 
 class HomePage extends StatelessWidget {
@@ -22,9 +23,12 @@ class HomePage extends StatelessWidget {
               visibleWhen: [
                 responsive.Condition.equals(name: responsive.DESKTOP)
               ],
-              child: Drawer(),
+              child: SideBarWidget(),
             ),
-            Expanded(child: Placeholder()),
+            Expanded(
+                child: Container(
+              color: Theme.of(context).primaryColorDark,
+            )),
           ],
         ),
       ),

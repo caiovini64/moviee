@@ -1,52 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:moviee/presenter/pages/home/components/widgets/button_side_bar_widget.dart';
+import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 class SideBarWidget extends StatelessWidget {
-  const SideBarWidget({
-    Key? key,
-  }) : super(key: key);
+  final HomeController controller;
+  const SideBarWidget({required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: Container(
-        color: Theme.of(context).primaryColor,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 40),
-            Text(
-              'Just Move it',
-              style: TextStyle(color: Colors.white, fontSize: 20),
+    return Obx(() {
+      return AnimatedContainer(
+        duration: Duration(milliseconds: 200),
+        width: controller.isSideBarOpen ? 300 : 100,
+        child: Drawer(
+          child: Container(
+            color: Theme.of(context).primaryColor,
+            child: Column(
+              crossAxisAlignment: controller.isSideBarOpen
+                  ? CrossAxisAlignment.end
+                  : CrossAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.menu),
+                  color: Colors.white,
+                  onPressed: () => controller.tapSideBar(),
+                ),
+                ButtonSideBar(
+                  title: 'Home',
+                  isIndex: true,
+                  icon: Icons.home,
+                  onTap: () => print('home'),
+                  isOpen: controller.isSideBarOpen,
+                ),
+                ButtonSideBar(
+                  title: 'Movies',
+                  isIndex: false,
+                  icon: Icons.movie,
+                  onTap: () => print('movies'),
+                  isOpen: controller.isSideBarOpen,
+                ),
+                ButtonSideBar(
+                  title: 'Favorites',
+                  isIndex: false,
+                  icon: Icons.favorite,
+                  onTap: () => print('Favorites'),
+                  isOpen: controller.isSideBarOpen,
+                ),
+                ButtonSideBar(
+                  title: 'About',
+                  isIndex: false,
+                  icon: Icons.info,
+                  onTap: () => print('About'),
+                  isOpen: controller.isSideBarOpen,
+                ),
+              ],
             ),
-            SizedBox(height: 30),
-            ButtonSideBar(
-              icon: Icons.home,
-              title: 'Home',
-              isIndex: true,
-              onTap: () {},
-            ),
-            ButtonSideBar(
-              icon: Icons.movie,
-              title: 'Movies',
-              isIndex: false,
-              onTap: () {},
-            ),
-            ButtonSideBar(
-              icon: Icons.favorite,
-              title: 'Favorites',
-              isIndex: false,
-              onTap: () {},
-            ),
-            ButtonSideBar(
-              icon: Icons.info,
-              title: 'About',
-              isIndex: false,
-              onTap: () {},
-            ),
-          ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

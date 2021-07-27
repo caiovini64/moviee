@@ -15,9 +15,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = serviceLocator.get<HomeController>();
     return GetBuilder(
-        init: controller,
-        builder: (_) {
-          return Obx(() {
+      init: controller,
+      builder: (_) {
+        return Obx(
+          () {
             switch (controller.viewState) {
               case ViewState.loading:
                 return LoadingPage();
@@ -28,8 +29,10 @@ class HomePage extends StatelessWidget {
               default:
                 return LoadingPage();
             }
-          });
-        });
+          },
+        );
+      },
+    );
   }
 }
 

@@ -9,6 +9,12 @@ class ImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final urlPath = 'https://image.tmdb.org/t/p/' + imageQuality;
 
-    return Image(image: NetworkImage(urlPath + url));
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Image(
+        image: NetworkImage(urlPath + url),
+        fit: BoxFit.cover,
+      ),
+    );
   }
 }

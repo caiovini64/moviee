@@ -34,8 +34,8 @@ dependencies:
   http:
   get_it:
   get:
-  responsive_framework:
   carousel_slider: ^4.0.0
+  responsive_builder:
 
 dev_dependencies:
   flutter_test:

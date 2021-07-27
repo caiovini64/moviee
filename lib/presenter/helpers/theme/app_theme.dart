@@ -29,5 +29,6 @@ ThemeData appTheme() {
     textTheme: textTheme,
     backgroundColor: backgroundColor,
     primaryColorDark: primaryDarkColor,
+    iconTheme: IconThemeData(color: textColor),
   );
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moviee/presenter/pages/home/widgets/button_side_bar_widget.dart';
+import 'package:moviee/presenter/pages/home/components/widgets/button_side_bar_widget.dart';
 
 class SideBarWidget extends StatelessWidget {
   const SideBarWidget({

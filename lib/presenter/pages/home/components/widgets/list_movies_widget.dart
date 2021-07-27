@@ -16,11 +16,11 @@ class ListMoviesWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           LimitedBox(
-            maxHeight: 300,
+            maxHeight: 280,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: 5,
+              itemCount: 6,
               itemBuilder: (context, index) {
                 final movie = list[index];
                 return ImageWidget(

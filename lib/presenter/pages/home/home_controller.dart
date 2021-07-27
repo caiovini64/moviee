@@ -12,12 +12,15 @@ class HomeController extends GetxController {
   final popularMoviesList = <MovieEntity>[].obs;
   final _viewState = ViewState.initial.obs;
   final _failureMessage = ''.obs;
+  final _isSidebarOpen = false.obs;
 
   String get failureMessage => _failureMessage.value;
   ViewState get viewState => _viewState.value;
+  bool get isSideBarOpen => _isSidebarOpen.value;
 
   set failureMessage(message) => _failureMessage.value = message;
   set viewState(state) => _viewState.value = state;
+  set isSideBarOpen(state) => _isSidebarOpen.value = state;
 
   @override
   void onInit() {
@@ -39,6 +42,10 @@ class HomeController extends GetxController {
         popularMoviesList.addAll(data);
       },
     );
+  }
+
+  void tapSideBar() {
+    isSideBarOpen = !isSideBarOpen;
   }
 
   void _setState(ViewState state) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moviee/presenter/pages/home/components/widgets/side_bar_widget.dart';
-import 'package:moviee/presenter/pages/home/components/widgets/widgets.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 class HomeDesktopPage extends StatelessWidget {
@@ -13,10 +12,10 @@ class HomeDesktopPage extends StatelessWidget {
       backgroundColor: Theme.of(context).backgroundColor,
       body: Row(
         children: [
-          SideBarWidget(),
+          SideBarWidget(controller: controller),
           Column(
             children: [
-              ListMoviesWidget(controller.popularMoviesList),
+              // ListMoviesWidget(controller.popularMoviesList),
             ],
           ),
         ],

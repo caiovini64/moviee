@@ -15,21 +15,32 @@ class HomeDesktopPage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SideBarWidget(controller: controller),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              SearchBarWidget(),
-              ListMoviesWidget(
-                list: controller.popularMoviesList,
-                controller: controller,
-              ),
-              ListMoviesWidget(
-                list: controller.popularMoviesList,
-                controller: controller,
-              ),
-            ],
-          ),
+          Expanded(
+            child: LayoutBuilder(builder: (context, constraints) {
+              return Container(
+                width: constraints.maxWidth,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SearchBarWidget(),
+                    ListMoviesWidget(
+                      list: controller.popularMoviesList,
+                      controller: controller,
+                    ),
+                    ListMoviesWidget(
+                      list: controller.popularMoviesList,
+                      controller: controller,
+                    ),
+                    // ListMoviesWidget(
+                    //   list: controller.popularMoviesList,
+                    //   controller: controller,
+                    // ),
+                  ],
+                ),
+              );
+            }),
+          )
         ],
       ),
       bottomNavigationBar: FooterWidget(),

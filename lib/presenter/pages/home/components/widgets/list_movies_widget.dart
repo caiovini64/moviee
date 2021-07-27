@@ -11,31 +11,34 @@ class ListMoviesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return Padding(
+    return Expanded(
+      child: Container(
         padding: const EdgeInsets.only(left: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedContainer(
-              duration: Duration(milliseconds: 200),
-              height: controller.isSideBarOpen ? 280 : 300,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  final movie = list[index];
-                  return ImageWidget(
-                    url: movie.posterPath,
-                    imageQuality: 'w500',
-                  );
-                },
-              ),
-            ),
-          ],
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                final movie = list[index];
+                return Center(
+                  child: Container(
+                    width: constraints.maxWidth / 6,
+                    child: AspectRatio(
+                      aspectRatio: 0.7,
+                      child: ImageWidget(
+                        url: movie.posterPath,
+                        imageQuality: 'w500',
+                      ),
+                    ),
+                  ),
+                );
+              },
+            );
+          },
         ),
-      );
-    });
+      ),
+    );
   }
 }

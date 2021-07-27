@@ -13,7 +13,7 @@ class ListMoviesWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           LimitedBox(
             maxHeight: 280,
@@ -25,7 +25,7 @@ class ListMoviesWidget extends StatelessWidget {
                 final movie = list[index];
                 return ImageWidget(
                   url: movie.posterPath,
-                  imageQuality: 'w500',
+                  imageQuality: 'original',
                 );
               },
             ),

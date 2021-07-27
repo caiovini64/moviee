@@ -12,7 +12,7 @@ class SideBarWidget extends StatelessWidget {
     return Obx(() {
       return AnimatedContainer(
         duration: Duration(milliseconds: 200),
-        width: controller.isSideBarOpen ? 300 : 100,
+        width: controller.isSideBarOpen ? 265 : 100,
         child: Drawer(
           child: Container(
             color: Theme.of(context).primaryColor,

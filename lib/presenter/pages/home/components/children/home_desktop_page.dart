@@ -12,6 +12,7 @@ class HomeDesktopPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColorDark,
       body: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           SideBarWidget(controller: controller),
           Column(

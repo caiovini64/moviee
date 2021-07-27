@@ -13,20 +13,20 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = serviceLocator.get<HomeController>();
-    return GetBuilder(
-        init: controller,
-        builder: (_) {
+    final homeController = serviceLocator.get<HomeController>();
+    return GetBuilder<HomeController>(
+        init: homeController,
+        builder: (controller) {
           return Obx(() {
             switch (controller.viewState) {
               case ViewState.loading:
                 return LoadingPage();
               case ViewState.error:
-                return LoadingPage();
+                return CircularProgressIndicator();
               case ViewState.done:
                 return buildPage(context, controller);
               default:
-                return LoadingPage();
+                return CircularProgressIndicator();
             }
           });
         });

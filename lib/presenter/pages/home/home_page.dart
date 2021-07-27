@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart';
+import 'package:moviee/presenter/components/loading_page.dart';
 import 'package:moviee/presenter/helpers/helpers.dart';
 import 'package:moviee/presenter/pages/home/components/children/children.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
@@ -19,13 +20,13 @@ class HomePage extends StatelessWidget {
           return Obx(() {
             switch (controller.viewState) {
               case ViewState.loading:
-                return CircularProgressIndicator();
+                return LoadingPage();
               case ViewState.error:
-                return CircularProgressIndicator();
+                return LoadingPage();
               case ViewState.done:
                 return buildPage(context, controller);
               default:
-                return CircularProgressIndicator();
+                return LoadingPage();
             }
           });
         });

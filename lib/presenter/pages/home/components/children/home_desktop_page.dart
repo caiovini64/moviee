@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moviee/presenter/components/footer_widget.dart';
 import 'package:moviee/presenter/pages/home/components/widgets/side_bar_widget.dart';
 import 'package:moviee/presenter/pages/home/components/widgets/widgets.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
@@ -25,6 +26,7 @@ class HomeDesktopPage extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: FooterWidget(),
     );
   }
 }

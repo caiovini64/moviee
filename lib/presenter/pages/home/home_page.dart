@@ -34,14 +34,9 @@ class HomePage extends StatelessWidget {
 }
 
 Widget buildPage(BuildContext context, HomeController controller) {
-  return ResponsiveBuilder(builder: (context, sizingInformation) {
-    switch (sizingInformation.deviceScreenType) {
-      case DeviceScreenType.desktop:
-        return HomeDesktopPage(controller);
-      case DeviceScreenType.tablet:
-        return Container(color: Colors.black);
-      default:
-        return Container(color: Colors.blue);
-    }
-  });
+  return ScreenTypeLayout(
+    mobile: Container(color: Colors.red),
+    tablet: Container(color: Colors.blue),
+    desktop: HomeDesktopPage(controller),
+  );
 }

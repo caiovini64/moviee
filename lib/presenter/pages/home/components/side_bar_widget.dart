@@ -8,6 +8,13 @@ class SideBarWidget extends StatelessWidget {
   final HomeController controller;
   const SideBarWidget({required this.controller});
 
+  bool pageStateMovies() {
+    if (controller.pageState == PageState.nowPlaying ||
+        controller.pageState == PageState.topRated ||
+        controller.pageState == PageState.upcoming) return true;
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -29,30 +36,30 @@ class SideBarWidget extends StatelessWidget {
                 ),
                 ButtonSideBar(
                   title: 'Home',
-                  isIndex: true,
+                  isIndex: controller.pageState == PageState.home,
                   icon: Icons.home,
                   onTap: () => controller.updatePageState(PageState.home),
                   isOpen: controller.isSideBarOpen,
                 ),
                 ButtonSideBar(
                   title: 'Movies',
-                  isIndex: false,
+                  isIndex: pageStateMovies(),
                   icon: Icons.movie,
                   onTap: () => controller.updatePageState(PageState.topRated),
                   isOpen: controller.isSideBarOpen,
                 ),
                 ButtonSideBar(
                   title: 'Favorites',
-                  isIndex: false,
+                  isIndex: controller.pageState == PageState.favorites,
                   icon: Icons.favorite,
-                  onTap: () => controller.updatePageState(PageState.home),
+                  onTap: () => controller.updatePageState(PageState.favorites),
                   isOpen: controller.isSideBarOpen,
                 ),
                 ButtonSideBar(
                   title: 'About',
-                  isIndex: false,
+                  isIndex: controller.pageState == PageState.info,
                   icon: Icons.info,
-                  onTap: () => print('About'),
+                  onTap: () => controller.updatePageState(PageState.info),
                   isOpen: controller.isSideBarOpen,
                 ),
               ],

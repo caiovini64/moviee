@@ -26,7 +26,8 @@ class _ButtonSideBarState extends State<ButtonSideBar> {
       onTap: () => widget.onTap(),
       child: Padding(
         padding: const EdgeInsets.only(top: 20.0),
-        child: Container(
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
           padding: EdgeInsets.symmetric(vertical: 10),
           color: widget.isIndex
               ? Theme.of(context).primaryColorDark

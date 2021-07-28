@@ -3,9 +3,10 @@ import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart';
 import 'package:moviee/presenter/components/loading_page.dart';
 import 'package:moviee/presenter/helpers/helpers.dart';
-import 'package:moviee/presenter/pages/home/components/children/children.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+
+import 'components/widgets.dart';
 
 class HomePage extends StatelessWidget {
   static const route = '/';
@@ -40,6 +41,6 @@ Widget buildPage(BuildContext context, HomeController controller) {
   return ScreenTypeLayout(
     mobile: Container(color: Colors.red),
     tablet: Container(color: Colors.blue),
-    desktop: HomeDesktopPage(controller),
+    desktop: HomeDesktopScreen(controller),
   );
 }

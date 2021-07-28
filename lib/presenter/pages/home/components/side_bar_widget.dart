@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:moviee/presenter/pages/home/components/widgets/button_side_bar_widget.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
+
+import 'desktop_widgets.dart';
 
 class SideBarWidget extends StatelessWidget {
   final HomeController controller;

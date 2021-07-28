@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:moviee/domain/entities/entities.dart';
 import 'package:moviee/presenter/components/image/image_widget.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
 
-class ListMoviesWidget extends StatelessWidget {
+class GridMoviesWidget extends StatelessWidget {
   final List<MovieEntity> list;
   final HomeController controller;
-  const ListMoviesWidget({required this.list, required this.controller});
+  const GridMoviesWidget({required this.list, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.only(left: 20.0),
+        alignment: Alignment.center,
         child: LayoutBuilder(
           builder: (context, constraints) {
-            return ListView.builder(
+            return GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 9,
+                mainAxisSpacing: 9,
+                childAspectRatio: 14 / 9,
+              ),
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: 6,
+              itemCount: 12,
               itemBuilder: (context, index) {
                 final movie = list[index];
                 return Center(
                   child: Container(
-                    width: constraints.maxWidth / 6,
-                    child: AspectRatio(
-                      aspectRatio: 0.7,
-                      child: ImageWidget(
-                        url: movie.posterPath,
-                        imageQuality: 'w500',
-                      ),
+                    height: constraints.maxHeight / 1,
+                    child: ImageWidget(
+                      url: movie.posterPath,
+                      imageQuality: 'w500',
                     ),
                   ),
                 );

@@ -28,7 +28,7 @@ class HomeController extends GetxController {
     loadPopularMovies();
   }
 
-  loadPopularMovies() async {
+  Future<void> loadPopularMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
         await popularMoviesUsecase(NoParams());

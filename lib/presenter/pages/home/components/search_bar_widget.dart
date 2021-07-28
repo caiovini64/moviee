@@ -8,7 +8,7 @@ class SearchBarWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Align(
-        alignment: Alignment.centerRight,
+        alignment: Alignment.centerLeft,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),

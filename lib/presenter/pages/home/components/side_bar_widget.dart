@@ -20,7 +20,7 @@ class SideBarWidget extends StatelessWidget {
     return Obx(() {
       return AnimatedContainer(
         duration: Duration(milliseconds: 200),
-        width: controller.isSideBarOpen ? 265 : 100,
+        width: controller.isSideBarOpen ? 265 : 80,
         child: Drawer(
           child: Container(
             color: Theme.of(context).primaryColor,
@@ -29,17 +29,20 @@ class SideBarWidget extends StatelessWidget {
                   ? CrossAxisAlignment.end
                   : CrossAxisAlignment.center,
               children: [
-                IconButton(
-                  icon: Icon(Icons.menu),
-                  color: Colors.white,
-                  onPressed: () {
-                    if (controller.isMoviesCategoriesSelected) {
-                      controller.tapSideBar();
-                      controller.tapMovieCategories();
-                    } else {
-                      controller.tapSideBar();
-                    }
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(right: 20.0, left: 20),
+                  child: IconButton(
+                    icon: Icon(Icons.menu),
+                    color: Colors.white,
+                    onPressed: () {
+                      if (controller.isMoviesCategoriesSelected) {
+                        controller.tapSideBar();
+                        controller.tapMovieCategories();
+                      } else {
+                        controller.tapSideBar();
+                      }
+                    },
+                  ),
                 ),
                 ButtonSideBar(
                   title: 'Home',
@@ -54,9 +57,7 @@ class SideBarWidget extends StatelessWidget {
                   isIndex: pageStateMovies(),
                   icon: Icons.movie,
                   hasIcon: true,
-                  suffix: controller.isSideBarOpen
-                      ? Icon(Icons.arrow_drop_down, size: 20)
-                      : SizedBox(width: 20),
+                  suffix: Icon(Icons.arrow_drop_down, size: 20),
                   onTap: () {
                     if (controller.isSideBarOpen) {
                       controller.tapMovieCategories();

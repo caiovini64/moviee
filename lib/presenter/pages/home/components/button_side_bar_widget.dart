@@ -17,7 +17,7 @@ class ButtonSideBar extends StatefulWidget {
     required this.icon,
     required this.onTap,
     required this.isOpen,
-    this.suffix = const SizedBox(width: 20),
+    this.suffix = const SizedBox.shrink(),
     this.hasIcon = false,
     this.fontSize = 18,
   }) : super(key: key);

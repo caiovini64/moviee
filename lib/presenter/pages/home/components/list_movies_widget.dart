@@ -5,8 +5,9 @@ import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 class GridMoviesWidget extends StatelessWidget {
   final List<MovieEntity> list;
-  final HomeController controller;
-  const GridMoviesWidget({required this.list, required this.controller});
+  const GridMoviesWidget({
+    required this.list,
+  });
 
   @override
   Widget build(BuildContext context) {

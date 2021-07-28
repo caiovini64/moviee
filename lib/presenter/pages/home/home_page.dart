@@ -22,13 +22,13 @@ class HomePage extends StatelessWidget {
           () {
             switch (controller.viewState) {
               case ViewState.loading:
-                return LoadingPage();
+                return LoadingPage(controller: controller);
               case ViewState.error:
-                return LoadingPage();
+                return LoadingPage(controller: controller);
               case ViewState.done:
                 return buildPage(context, controller);
               default:
-                return LoadingPage();
+                return LoadingPage(controller: controller);
             }
           },
         );

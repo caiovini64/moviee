@@ -48,28 +48,31 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
-    loadData();
+    ever(_pageState, (_) {
+      print(_pageState.value);
+      _loadData();
+    });
+    _loadData();
   }
 
-  Future<void> loadData() async {
+  Future<void> _loadData() async {
     switch (pageState) {
       case PageState.home:
-        return loadPopularMovies();
+        return _loadPopularMovies();
       case PageState.popular:
-        return loadPopularMovies();
+        return _loadPopularMovies();
       case PageState.topRated:
-        return loadTopRatedMovies();
+        return _loadTopRatedMovies();
       case PageState.upcoming:
-        return loadUpcomingMovies();
+        return _loadUpcomingMovies();
       case PageState.nowPlaying:
-        return loadNowPlayingMovies();
+        return _loadNowPlayingMovies();
       default:
-        return loadPopularMovies();
+        return _loadPopularMovies();
     }
   }
 
-  Future<void> loadPopularMovies() async {
+  Future<void> _loadPopularMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
         await popularMoviesUsecase(NoParams());
@@ -79,13 +82,14 @@ class HomeController extends GetxController {
         failureMessage = failure.message;
       },
       (data) {
-        _setState(ViewState.done);
+        moviesList.clear();
         moviesList.addAll(data);
+        _setState(ViewState.done);
       },
     );
   }
 
-  Future<void> loadTopRatedMovies() async {
+  Future<void> _loadTopRatedMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
         await topRatedMoviesUsecase(NoParams());
@@ -95,13 +99,14 @@ class HomeController extends GetxController {
         failureMessage = failure.message;
       },
       (data) {
-        _setState(ViewState.done);
+        moviesList.clear();
         moviesList.addAll(data);
+        _setState(ViewState.done);
       },
     );
   }
 
-  Future<void> loadUpcomingMovies() async {
+  Future<void> _loadUpcomingMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
         await upcomingMoviesUsecase(NoParams());
@@ -111,13 +116,14 @@ class HomeController extends GetxController {
         failureMessage = failure.message;
       },
       (data) {
-        _setState(ViewState.done);
+        moviesList.clear();
         moviesList.addAll(data);
+        _setState(ViewState.done);
       },
     );
   }
 
-  Future<void> loadNowPlayingMovies() async {
+  Future<void> _loadNowPlayingMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
         await nowPlayingMoviesUsecase(NoParams());
@@ -127,8 +133,9 @@ class HomeController extends GetxController {
         failureMessage = failure.message;
       },
       (data) {
-        _setState(ViewState.done);
+        moviesList.clear();
         moviesList.addAll(data);
+        _setState(ViewState.done);
       },
     );
   }

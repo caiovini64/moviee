@@ -34,16 +34,20 @@ class HomeController extends GetxController {
   final _pageState = PageState.home.obs;
   final _failureMessage = ''.obs;
   final _isSidebarOpen = false.obs;
+  final _isMoviesCategoriesSelected = false.obs;
 
   String get failureMessage => _failureMessage.value;
   ViewState get viewState => _viewState.value;
   PageState get pageState => _pageState.value;
   bool get isSideBarOpen => _isSidebarOpen.value;
+  bool get isMoviesCategoriesSelected => _isMoviesCategoriesSelected.value;
 
   set failureMessage(message) => _failureMessage.value = message;
   set viewState(state) => _viewState.value = state;
   set pageState(state) => _pageState.value = state;
   set isSideBarOpen(state) => _isSidebarOpen.value = state;
+  set isMoviesCategoriesSelected(newValue) =>
+      _isMoviesCategoriesSelected.value = newValue;
 
   @override
   void onInit() {
@@ -145,4 +149,7 @@ class HomeController extends GetxController {
   void _setState(ViewState state) => viewState = state;
 
   void updatePageState(PageState state) => pageState = state;
+
+  void tapMovieCategories() =>
+      isMoviesCategoriesSelected = !isMoviesCategoriesSelected;
 }

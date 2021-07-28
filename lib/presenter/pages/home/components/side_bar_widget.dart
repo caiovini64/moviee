@@ -32,12 +32,20 @@ class SideBarWidget extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.menu),
                   color: Colors.white,
-                  onPressed: () => controller.tapSideBar(),
+                  onPressed: () {
+                    if (controller.isMoviesCategoriesSelected) {
+                      controller.tapSideBar();
+                      controller.tapMovieCategories();
+                    } else {
+                      controller.tapSideBar();
+                    }
+                  },
                 ),
                 ButtonSideBar(
                   title: 'Home',
                   isIndex: controller.pageState == PageState.home,
                   icon: Icons.home,
+                  hasIcon: true,
                   onTap: () => controller.updatePageState(PageState.home),
                   isOpen: controller.isSideBarOpen,
                 ),
@@ -45,13 +53,64 @@ class SideBarWidget extends StatelessWidget {
                   title: 'Movies',
                   isIndex: pageStateMovies(),
                   icon: Icons.movie,
-                  onTap: () => controller.updatePageState(PageState.topRated),
+                  hasIcon: true,
+                  suffix: controller.isSideBarOpen
+                      ? Icon(Icons.arrow_drop_down, size: 20)
+                      : SizedBox(width: 20),
+                  onTap: () {
+                    if (controller.isSideBarOpen) {
+                      controller.tapMovieCategories();
+                      controller.updatePageState(PageState.topRated);
+                    } else {
+                      controller.tapMovieCategories();
+                      controller.updatePageState(PageState.topRated);
+                      controller.tapSideBar();
+                    }
+                  },
                   isOpen: controller.isSideBarOpen,
+                ),
+                Visibility(
+                  visible: controller.isMoviesCategoriesSelected,
+                  child: Column(
+                    children: [
+                      ButtonSideBar(
+                        title: 'Top Rated',
+                        isIndex: controller.pageState == PageState.topRated,
+                        icon: Icons.favorite,
+                        hasIcon: false,
+                        onTap: () =>
+                            controller.updatePageState(PageState.topRated),
+                        isOpen: controller.isSideBarOpen,
+                        fontSize: 12,
+                      ),
+                      ButtonSideBar(
+                        title: 'Up Coming',
+                        isIndex: controller.pageState == PageState.upcoming,
+                        icon: Icons.info,
+                        hasIcon: false,
+                        onTap: () =>
+                            controller.updatePageState(PageState.upcoming),
+                        isOpen: controller.isSideBarOpen,
+                        fontSize: 12,
+                      ),
+                      ButtonSideBar(
+                        title: 'Now Playing',
+                        isIndex: controller.pageState == PageState.nowPlaying,
+                        icon: Icons.info,
+                        hasIcon: false,
+                        onTap: () =>
+                            controller.updatePageState(PageState.nowPlaying),
+                        isOpen: controller.isSideBarOpen,
+                        fontSize: 12,
+                      )
+                    ],
+                  ),
                 ),
                 ButtonSideBar(
                   title: 'Favorites',
                   isIndex: controller.pageState == PageState.favorites,
                   icon: Icons.favorite,
+                  hasIcon: true,
                   onTap: () => controller.updatePageState(PageState.favorites),
                   isOpen: controller.isSideBarOpen,
                 ),
@@ -59,6 +118,7 @@ class SideBarWidget extends StatelessWidget {
                   title: 'About',
                   isIndex: controller.pageState == PageState.info,
                   icon: Icons.info,
+                  hasIcon: true,
                   onTap: () => controller.updatePageState(PageState.info),
                   isOpen: controller.isSideBarOpen,
                 ),

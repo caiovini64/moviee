@@ -79,23 +79,26 @@ class _SideBarWidgetState extends State<SideBarWidget>
                       widget.controller.updatePageState(PageState.home),
                   isOpen: widget.controller.isSideBarOpen,
                 ),
-                ButtonSideBar(
-                  title: 'Movies',
-                  isIndex: pageStateMovies(),
-                  icon: Icons.movie,
-                  hasIcon: true,
-                  suffix: Icon(Icons.arrow_drop_down, size: 20),
-                  onTap: () {
-                    if (widget.controller.isSideBarOpen) {
-                      widget.controller.tapMovieCategories();
-                      widget.controller.updatePageState(PageState.topRated);
-                    } else {
-                      widget.controller.tapMovieCategories();
-                      widget.controller.updatePageState(PageState.topRated);
-                      widget.controller.tapSideBar();
-                    }
-                  },
-                  isOpen: widget.controller.isSideBarOpen,
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: ButtonSideBar(
+                    title: 'Movies',
+                    isIndex: pageStateMovies(),
+                    icon: Icons.movie,
+                    hasIcon: true,
+                    suffix: Icon(Icons.arrow_drop_down, size: 20),
+                    onTap: () {
+                      if (widget.controller.isSideBarOpen) {
+                        widget.controller.tapMovieCategories();
+                        widget.controller.updatePageState(PageState.topRated);
+                      } else {
+                        widget.controller.tapMovieCategories();
+                        widget.controller.updatePageState(PageState.topRated);
+                        widget.controller.tapSideBar();
+                      }
+                    },
+                    isOpen: widget.controller.isSideBarOpen,
+                  ),
                 ),
                 Visibility(
                   visible: widget.controller.isMoviesCategoriesSelected,

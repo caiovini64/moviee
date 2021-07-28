@@ -36,7 +36,7 @@ class HomeDesktopScreen extends StatelessWidget {
                       ),
                     ),
                     GridMoviesWidget(
-                      list: controller.popularMoviesList,
+                      list: controller.moviesList,
                       controller: controller,
                     ),
                   ],

@@ -20,22 +20,23 @@ class HomeDesktopScreen extends StatelessWidget {
               return Container(
                 width: constraints.maxWidth,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SearchBarWidget(),
-                    ListMoviesWidget(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SearchBarWidget(),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.umbrella),
+                        ),
+                      ],
+                    ),
+                    GridMoviesWidget(
                       list: controller.popularMoviesList,
                       controller: controller,
                     ),
-                    ListMoviesWidget(
-                      list: controller.popularMoviesList,
-                      controller: controller,
-                    ),
-                    // ListMoviesWidget(
-                    //   list: controller.popularMoviesList,
-                    //   controller: controller,
-                    // ),
                   ],
                 ),
               );

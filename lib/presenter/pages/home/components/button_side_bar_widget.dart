@@ -34,12 +34,12 @@ class _ButtonSideBarState extends State<ButtonSideBar> {
       child: Padding(
         padding: const EdgeInsets.only(top: 20.0),
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           color: widget.isIndex
               ? Theme.of(context).primaryColorDark
               : Theme.of(context).primaryColor,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Visibility(
                 visible: widget.hasIcon,

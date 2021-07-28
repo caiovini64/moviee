@@ -34,6 +34,7 @@ dependencies:
   http:
   get_it:
   get:
+    
   carousel_slider: ^4.0.0
   responsive_builder:
   line_icons: ^2.0.1

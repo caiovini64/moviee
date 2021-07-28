@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:moviee/domain/entities/entities.dart';
 import 'package:moviee/presenter/components/image/image_widget.dart';
-import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 class GridMoviesWidget extends StatelessWidget {
   final List<MovieEntity> list;
-  final HomeController controller;
-  const GridMoviesWidget({required this.list, required this.controller});
+  const GridMoviesWidget({
+    required this.list,
+  });
 
   @override
   Widget build(BuildContext context) {

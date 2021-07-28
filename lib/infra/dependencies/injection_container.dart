@@ -13,8 +13,14 @@ final serviceLocator = GetIt.instance;
 
 void init() {
   //Controllers
-  serviceLocator.registerLazySingleton(() => HomeController(
-      popularMoviesUsecase: serviceLocator<GetPopularMoviesUsecase>()));
+  serviceLocator.registerLazySingleton(
+    () => HomeController(
+      popularMoviesUsecase: serviceLocator<GetPopularMoviesUsecase>(),
+      topRatedMoviesUsecase: serviceLocator<GetTopRatedMoviesUsecase>(),
+      upcomingMoviesUsecase: serviceLocator<GetUpcomingMoviesUsecase>(),
+      nowPlayingMoviesUsecase: serviceLocator<GetNowPlayingMoviesUsecase>(),
+    ),
+  );
   //Use cases
   serviceLocator.registerLazySingleton(
       () => GetMovieDetailsUsecase(serviceLocator<IMovieDetailsRepository>()));

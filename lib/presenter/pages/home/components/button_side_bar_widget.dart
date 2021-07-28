@@ -6,6 +6,10 @@ class ButtonSideBar extends StatefulWidget {
   final IconData icon;
   final bool isIndex;
   final bool isOpen;
+  final double fontSize;
+  final bool hasIcon;
+  final Widget suffix;
+
   const ButtonSideBar({
     Key? key,
     required this.title,
@@ -13,6 +17,9 @@ class ButtonSideBar extends StatefulWidget {
     required this.icon,
     required this.onTap,
     required this.isOpen,
+    this.suffix = const SizedBox.shrink(),
+    this.hasIcon = false,
+    this.fontSize = 18,
   }) : super(key: key);
 
   @override
@@ -34,25 +41,34 @@ class _ButtonSideBarState extends State<ButtonSideBar> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                icon: Icon(widget.icon),
-                color: Colors.white,
-                onPressed: () => widget.onTap(),
+              Visibility(
+                visible: widget.hasIcon,
+                child: IconButton(
+                  icon: Icon(widget.icon),
+                  color: Colors.white,
+                  onPressed: () => widget.onTap(),
+                ),
               ),
               Visibility(
                 visible: widget.isOpen,
                 child: SizedBox(width: 60),
               ),
-              Visibility(
-                visible: widget.isOpen,
-                child: Container(
-                  width: 100,
-                  child: Text(
-                    widget.title,
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+              Row(
+                children: [
+                  Visibility(
+                    visible: widget.isOpen,
+                    child: Container(
+                      width: 100,
+                      child: Text(
+                        widget.title,
+                        style: TextStyle(
+                            color: Colors.white, fontSize: widget.fontSize),
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                  widget.suffix,
+                ],
+              )
             ],
           ),
         ),

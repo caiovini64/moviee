@@ -18,21 +18,24 @@ enum PageState {
 }
 
 class HomeController extends GetxController {
-  final GetPopularMoviesUsecase popularMoviesUsecase;
-  final GetTopRatedMoviesUsecase topRatedMoviesUsecase;
-  final GetUpcomingMoviesUsecase upcomingMoviesUsecase;
-  final GetNowPlayingMoviesUsecase nowPlayingMoviesUsecase;
-  final GetMovieDetailsUsecase movieDetailsUsecase;
+  final GetPopularMoviesUsecase _popularMoviesUsecase;
+  final GetTopRatedMoviesUsecase _topRatedMoviesUsecase;
+  final GetUpcomingMoviesUsecase _upcomingMoviesUsecase;
+  final GetNowPlayingMoviesUsecase _nowPlayingMoviesUsecase;
+  final GetMovieDetailsUsecase _movieDetailsUsecase;
+  final GetMovieRecommendationsUsecase _movieRecommendationsUsecase;
 
-  HomeController({
-    required this.topRatedMoviesUsecase,
-    required this.upcomingMoviesUsecase,
-    required this.nowPlayingMoviesUsecase,
-    required this.popularMoviesUsecase,
-    required this.movieDetailsUsecase,
-  });
+  HomeController(
+    this._topRatedMoviesUsecase,
+    this._upcomingMoviesUsecase,
+    this._nowPlayingMoviesUsecase,
+    this._popularMoviesUsecase,
+    this._movieDetailsUsecase,
+    this._movieRecommendationsUsecase,
+  );
 
   final moviesList = <MovieEntity>[].obs;
+  final recommendedMoviesList = <MovieEntity>[].obs;
 
   final _viewState = ViewState.initial.obs;
   final _pageState = PageState.home.obs;
@@ -91,7 +94,7 @@ class HomeController extends GetxController {
       case PageState.nowPlaying:
         return _loadNowPlayingMovies();
       case PageState.details:
-        return _loadMovieDetails(movieSelected);
+        return _loadDetailsParametes();
       default:
         return _loadPopularMovies();
     }
@@ -100,7 +103,7 @@ class HomeController extends GetxController {
   Future<void> _loadPopularMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
-        await popularMoviesUsecase(NoParams());
+        await _popularMoviesUsecase(NoParams());
     result.fold(
       (failure) {
         _setState(ViewState.error);
@@ -117,7 +120,7 @@ class HomeController extends GetxController {
   Future<void> _loadTopRatedMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
-        await topRatedMoviesUsecase(NoParams());
+        await _topRatedMoviesUsecase(NoParams());
     result.fold(
       (failure) {
         _setState(ViewState.error);
@@ -134,7 +137,7 @@ class HomeController extends GetxController {
   Future<void> _loadUpcomingMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
-        await upcomingMoviesUsecase(NoParams());
+        await _upcomingMoviesUsecase(NoParams());
     result.fold(
       (failure) {
         _setState(ViewState.error);
@@ -151,7 +154,7 @@ class HomeController extends GetxController {
   Future<void> _loadNowPlayingMovies() async {
     _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
-        await nowPlayingMoviesUsecase(NoParams());
+        await _nowPlayingMoviesUsecase(NoParams());
     result.fold(
       (failure) {
         _setState(ViewState.error);
@@ -168,7 +171,7 @@ class HomeController extends GetxController {
   Future<void> _loadMovieDetails(MovieEntity movieEntity) async {
     _setState(ViewState.loading);
     final Either<Failure, MovieDetailsEntity> result =
-        await movieDetailsUsecase(movieEntity);
+        await _movieDetailsUsecase(movieEntity);
     result.fold(
       (failure) {
         _setState(ViewState.error);
@@ -180,6 +183,28 @@ class HomeController extends GetxController {
         return movieSelectedDetails;
       },
     );
+  }
+
+  Future<void> _loadRecommendedMovies(MovieEntity movieEntity) async {
+    _setState(ViewState.loading);
+    final Either<Failure, List<MovieEntity>> result =
+        await _movieRecommendationsUsecase(movieEntity);
+    result.fold(
+      (failure) {
+        _setState(ViewState.error);
+        failureMessage = failure.message;
+      },
+      (data) {
+        recommendedMoviesList.clear();
+        recommendedMoviesList.addAll(data);
+        _setState(ViewState.done);
+      },
+    );
+  }
+
+  _loadDetailsParametes() {
+    _loadMovieDetails(movieSelected);
+    _loadRecommendedMovies(movieSelected);
   }
 
   void tapSideBar() => isSideBarOpen = !isSideBarOpen;

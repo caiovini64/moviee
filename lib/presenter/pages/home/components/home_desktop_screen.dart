@@ -21,7 +21,7 @@ class HomeDesktopScreen extends StatelessWidget {
           body: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SideBarWidget(controller: controller),
+              SideBarWidget(),
               Expanded(
                 child: LayoutBuilder(builder: (context, constraints) {
                   return Container(

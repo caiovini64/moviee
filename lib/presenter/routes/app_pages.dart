@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:moviee/presenter/pages/details/details_page.dart';
 import 'package:moviee/presenter/pages/home/home_page.dart';
 import 'package:moviee/presenter/pages/search/search_page.dart';
 
@@ -13,6 +14,10 @@ class AppPages {
     GetPage(
       name: Routes.SEARCH,
       page: () => SearchPage(),
+    ),
+    GetPage(
+      name: Routes.DETAILS,
+      page: () => DetailsPage(),
     ),
   ];
 }

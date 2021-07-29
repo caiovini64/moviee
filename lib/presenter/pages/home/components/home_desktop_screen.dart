@@ -76,7 +76,10 @@ class HomeDesktopScreen extends StatelessWidget {
             controller: controller,
           );
         case PageState.details:
-          return DetailsWidget(movieDetails: controller.movieSelectedDetails);
+          return DetailsWidget(
+            movieDetails: controller.movieSelectedDetails,
+            movieSelected: controller.movieSelected,
+          );
         default:
           return GridMoviesWidget(
             list: controller.moviesList.toList(),

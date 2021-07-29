@@ -40,6 +40,7 @@ class GridMoviesWidget extends StatelessWidget {
                     child: Container(
                       height: constraints.maxHeight / 1,
                       child: ImageWidget(
+                        heroKey: movie.id,
                         url: movie.posterPath,
                         imageQuality: 'w500',
                       ),

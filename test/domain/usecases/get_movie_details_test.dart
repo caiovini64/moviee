@@ -29,16 +29,16 @@ void main() {
   test(
       'Should returns details of a movie for a given movie id from the repository',
       () async {
-    when(() => repository.getMovieDetails(any()))
-        .thenAnswer((_) async => Right<Failure, MovieEntity>(kMovieEntity));
+    when(() => repository.getMovieDetails(any())).thenAnswer(
+        (_) async => Right<Failure, MovieDetailsEntity>(kMovieDetailsEntity));
     final result = await usecase(kMovieEntity);
-    expect(result, Right(kMovieEntity));
+    expect(result, Right(kMovieDetailsEntity));
     verify(() => repository.getMovieDetails(any()));
   });
 
   test('Should returns a Failure when dont succeed', () async {
-    when(() => repository.getMovieDetails(any()))
-        .thenAnswer((_) async => Left<Failure, MovieEntity>(ServerFailure()));
+    when(() => repository.getMovieDetails(any())).thenAnswer(
+        (_) async => Left<Failure, MovieDetailsEntity>(ServerFailure()));
     final result = await usecase(kMovieEntity);
     expect(result, Left(ServerFailure()));
     verify(() => repository.getMovieDetails(any()));

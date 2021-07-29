@@ -64,16 +64,19 @@ class HomeDesktopScreen extends StatelessWidget {
           return GridMoviesWidget(
             list: controller.moviesList.toList(),
             controller: controller,
+            rows: 2,
           );
         case PageState.info:
           return GridMoviesWidget(
             list: controller.moviesList.toList(),
             controller: controller,
+            rows: 2,
           );
         case PageState.favorites:
           return GridMoviesWidget(
             list: controller.moviesList.toList(),
             controller: controller,
+            rows: 2,
           );
         case PageState.details:
           return DetailsWidget(
@@ -84,6 +87,7 @@ class HomeDesktopScreen extends StatelessWidget {
           return GridMoviesWidget(
             list: controller.moviesList.toList(),
             controller: controller,
+            rows: 2,
           );
       }
     });

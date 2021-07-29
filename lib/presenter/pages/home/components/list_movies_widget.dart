@@ -6,9 +6,11 @@ import 'package:moviee/presenter/pages/home/home_controller.dart';
 class GridMoviesWidget extends StatelessWidget {
   final List<MovieEntity> list;
   final HomeController controller;
+  final int rows;
   const GridMoviesWidget({
     required this.list,
     required this.controller,
+    required this.rows,
   });
 
   @override
@@ -20,7 +22,7 @@ class GridMoviesWidget extends StatelessWidget {
           builder: (context, constraints) {
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+                crossAxisCount: rows,
                 crossAxisSpacing: 9,
                 mainAxisSpacing: 9,
                 childAspectRatio: 14 / 9,

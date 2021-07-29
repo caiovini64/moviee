@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart';
+import 'package:moviee/presenter/pages/home/components/details_widget.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 import 'widgets.dart';
@@ -21,7 +22,7 @@ class HomeDesktopScreen extends StatelessWidget {
           body: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SideBarWidget(controller: controller),
+              SideBarWidget(),
               Expanded(
                 child: LayoutBuilder(builder: (context, constraints) {
                   return Container(
@@ -42,11 +43,7 @@ class HomeDesktopScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Obx(() {
-                          return GridMoviesWidget(
-                            list: controller.moviesList.toList(),
-                          );
-                        })
+                        buildSinglePage(),
                       ],
                     ),
                   );
@@ -58,5 +55,42 @@ class HomeDesktopScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  Widget buildSinglePage() {
+    return Obx(() {
+      switch (controller.pageState) {
+        case PageState.home:
+          return GridMoviesWidget(
+            list: controller.moviesList.toList(),
+            controller: controller,
+            rows: 2,
+            itemCounts: controller.moviesList.length,
+          );
+        case PageState.info:
+          return GridMoviesWidget(
+            list: controller.moviesList.toList(),
+            controller: controller,
+            rows: 2,
+            itemCounts: 12,
+          );
+        case PageState.favorites:
+          return GridMoviesWidget(
+            list: controller.moviesList.toList(),
+            controller: controller,
+            rows: 2,
+            itemCounts: 12,
+          );
+        case PageState.details:
+          return DetailsWidget(controller: controller);
+        default:
+          return GridMoviesWidget(
+            list: controller.moviesList.toList(),
+            controller: controller,
+            rows: 2,
+            itemCounts: 12,
+          );
+      }
+    });
   }
 }

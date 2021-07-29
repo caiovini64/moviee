@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:moviee/presenter/pages/home/components/widgets.dart';
-import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 class LoadingPage extends StatelessWidget {
-  final HomeController controller;
+  final controller;
   const LoadingPage({Key? key, required this.controller}) : super(key: key);
 
   @override
@@ -13,7 +12,7 @@ class LoadingPage extends StatelessWidget {
       body: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SideBarWidget(controller: controller),
+          SideBarWidget(),
           Expanded(
             child: LayoutBuilder(builder: (context, constraints) {
               return Container(
@@ -21,19 +20,16 @@ class LoadingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 80.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          SearchBarWidget(),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.account_circle),
-                          ),
-                        ],
+                    Center(
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        child: CircularProgressIndicator(
+                          color: Theme.of(context).primaryColor,
+                          strokeWidth: 10,
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               );

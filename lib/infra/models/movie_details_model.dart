@@ -1,18 +1,21 @@
 import 'package:moviee/domain/entities/entities.dart';
 import 'package:moviee/infra/models/models.dart';
 
-class MovieDetailsModel extends MovieEntity {
+class MovieDetailsModel extends MovieDetailsEntity {
   MovieDetailsModel({
     required int id,
     required String title,
     required posterPath,
     required backdropPath,
     required List<GenresModel> genres,
+    required String description,
   }) : super(
           id: id,
           title: title,
           posterPath: posterPath,
           backdropPath: backdropPath,
+          genres: genres,
+          description: description,
         );
 
   factory MovieDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -22,6 +25,7 @@ class MovieDetailsModel extends MovieEntity {
       posterPath: json['poster_path'],
       backdropPath: json['backdrop_path'],
       genres: GenresModel.getGenres(json['genres']),
+      description: json['overview'] ?? '',
     );
   }
 }

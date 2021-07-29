@@ -11,7 +11,7 @@ class MovieDetailsRepository implements IMovieDetailsRepository {
   MovieDetailsRepository(this.datasource);
 
   @override
-  Future<Either<Failure, MovieEntity>> getMovieDetails(
+  Future<Either<Failure, MovieDetailsEntity>> getMovieDetails(
       MovieEntity movie) async {
     try {
       final result = await datasource.getMovieDetails(movie);

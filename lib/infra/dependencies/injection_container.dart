@@ -15,10 +15,12 @@ void init() {
   //Controllers
   serviceLocator.registerLazySingleton(
     () => HomeController(
-      popularMoviesUsecase: serviceLocator<GetPopularMoviesUsecase>(),
-      topRatedMoviesUsecase: serviceLocator<GetTopRatedMoviesUsecase>(),
-      upcomingMoviesUsecase: serviceLocator<GetUpcomingMoviesUsecase>(),
-      nowPlayingMoviesUsecase: serviceLocator<GetNowPlayingMoviesUsecase>(),
+      serviceLocator<GetTopRatedMoviesUsecase>(),
+      serviceLocator<GetUpcomingMoviesUsecase>(),
+      serviceLocator<GetNowPlayingMoviesUsecase>(),
+      serviceLocator<GetPopularMoviesUsecase>(),
+      serviceLocator<GetMovieDetailsUsecase>(),
+      serviceLocator<GetMovieRecommendationsUsecase>(),
     ),
   );
   //Use cases

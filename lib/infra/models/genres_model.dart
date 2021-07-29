@@ -1,8 +1,17 @@
-class GenresModel {
+import 'package:get/get_utils/src/platform/platform_io.dart';
+import 'package:moviee/domain/entities/entities.dart';
+
+class GenresModel extends GenresEntity {
   final int id;
   final String name;
 
-  GenresModel({required this.id, required this.name});
+  GenresModel({
+    required this.id,
+    required this.name,
+  }) : super(
+          id: id,
+          name: name,
+        );
 
   factory GenresModel.fromJson(Map<String, dynamic> json) {
     return GenresModel(

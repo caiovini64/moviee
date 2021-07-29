@@ -21,19 +21,16 @@ class LoadingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 80.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          SearchBarWidget(),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.account_circle),
-                          ),
-                        ],
+                    Center(
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        child: CircularProgressIndicator(
+                          color: Theme.of(context).primaryColor,
+                          strokeWidth: 10,
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               );

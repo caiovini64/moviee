@@ -19,6 +19,7 @@ void init() {
       topRatedMoviesUsecase: serviceLocator<GetTopRatedMoviesUsecase>(),
       upcomingMoviesUsecase: serviceLocator<GetUpcomingMoviesUsecase>(),
       nowPlayingMoviesUsecase: serviceLocator<GetNowPlayingMoviesUsecase>(),
+      movieDetailsUsecase: serviceLocator<GetMovieDetailsUsecase>(),
     ),
   );
   //Use cases

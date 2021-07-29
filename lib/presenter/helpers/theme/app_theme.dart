@@ -4,13 +4,13 @@ ThemeData appTheme() {
   final primaryColor = Color(0xff111821);
   final highlightColor = Color(0xff0582CA);
   final backgroundColor = Color(0xff111821);
-  final textColor = Color(0xffC7D5E0);
+  final textColor = Colors.white;
   final primaryDarkColor = Color(0xff0D1218);
   final textTheme = TextTheme(
     headline1: TextStyle(
-      fontSize: 24,
+      fontSize: 35,
       fontWeight: FontWeight.bold,
-      color: textColor,
+      color: highlightColor,
     ),
     headline2: TextStyle(
       fontSize: 16,
@@ -20,7 +20,7 @@ ThemeData appTheme() {
     headline3: TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.bold,
-      color: highlightColor,
+      color: textColor,
     ),
   );
   return ThemeData(

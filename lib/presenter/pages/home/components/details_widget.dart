@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:moviee/domain/entities/entities.dart';
 import 'package:moviee/presenter/components/components.dart';
 import 'package:moviee/presenter/pages/home/components/list_movies_widget.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
@@ -48,30 +47,32 @@ class DetailsWidget extends StatelessWidget {
                               controller.movieSelectedDetails.title,
                               style: Theme.of(context).textTheme.headline1,
                             ),
+                            Container(
+                              height: 30,
+                              margin: EdgeInsets.symmetric(vertical: 10),
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: controller
+                                    .movieSelectedDetails.genres.length,
+                                itemBuilder: (context, index) {
+                                  final genre = controller
+                                      .movieSelectedDetails.genres[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: Text(
+                                      genre.name,
+                                      style: TextStyle(
+                                          fontSize: 10, color: Colors.white),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
                             Text(
                               controller.movieSelectedDetails.description,
                               style: Theme.of(context).textTheme.headline3,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 20,
-                            ),
-                            Container(
-                              height: 20,
-                              child: Expanded(
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: controller
-                                      .movieSelectedDetails.genres.length,
-                                  itemBuilder: (context, index) {
-                                    final genre = controller
-                                        .movieSelectedDetails.genres[index];
-                                    return Container(
-                                      width: 50,
-                                      color: Theme.of(context).highlightColor,
-                                      child: Text(genre.name),
-                                    );
-                                  },
-                                ),
-                              ),
                             ),
                           ],
                         ),

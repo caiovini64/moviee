@@ -7,10 +7,12 @@ class GridMoviesWidget extends StatelessWidget {
   final List<MovieEntity> list;
   final HomeController controller;
   final int rows;
+  final int itemCounts;
   const GridMoviesWidget({
     required this.list,
     required this.controller,
     required this.rows,
+    required this.itemCounts,
   });
 
   @override
@@ -29,14 +31,13 @@ class GridMoviesWidget extends StatelessWidget {
               ),
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: 12,
+              itemCount: itemCounts,
               itemBuilder: (context, index) {
                 final movie = list[index];
                 return GestureDetector(
                   onTap: () {
                     controller.setMovieSelected(movie);
                     controller.updatePageState(PageState.details);
-                    print(movie);
                   },
                   child: Center(
                     child: Container(

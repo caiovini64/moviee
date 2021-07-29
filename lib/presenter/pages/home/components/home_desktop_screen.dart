@@ -65,30 +65,30 @@ class HomeDesktopScreen extends StatelessWidget {
             list: controller.moviesList.toList(),
             controller: controller,
             rows: 2,
+            itemCounts: controller.moviesList.length,
           );
         case PageState.info:
           return GridMoviesWidget(
             list: controller.moviesList.toList(),
             controller: controller,
             rows: 2,
+            itemCounts: 12,
           );
         case PageState.favorites:
           return GridMoviesWidget(
             list: controller.moviesList.toList(),
             controller: controller,
             rows: 2,
+            itemCounts: 12,
           );
         case PageState.details:
-          return DetailsWidget(
-            movieDetails: controller.movieSelectedDetails,
-            movieSelected: controller.movieSelected,
-            listRecommendedMovies: controller.recommendedMoviesList,
-          );
+          return DetailsWidget(controller: controller);
         default:
           return GridMoviesWidget(
             list: controller.moviesList.toList(),
             controller: controller,
             rows: 2,
+            itemCounts: 12,
           );
       }
     });

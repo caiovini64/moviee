@@ -52,6 +52,7 @@ class HomeController extends GetxController {
     id: 0,
     posterPath: '',
     genres: [],
+    description: '',
   ).obs;
 
   String get failureMessage => _failureMessage.value;
@@ -81,7 +82,7 @@ class HomeController extends GetxController {
     _loadData();
   }
 
-  Future<void> _loadData() async {
+  _loadData() async {
     switch (pageState) {
       case PageState.home:
         return _loadPopularMovies();
@@ -169,7 +170,6 @@ class HomeController extends GetxController {
   }
 
   Future<void> _loadMovieDetails(MovieEntity movieEntity) async {
-    _setState(ViewState.loading);
     final Either<Failure, MovieDetailsEntity> result =
         await _movieDetailsUsecase(movieEntity);
     result.fold(
@@ -179,14 +179,12 @@ class HomeController extends GetxController {
       },
       (data) {
         movieSelectedDetails = data;
-        _setState(ViewState.done);
         return movieSelectedDetails;
       },
     );
   }
 
   Future<void> _loadRecommendedMovies(MovieEntity movieEntity) async {
-    _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
         await _movieRecommendationsUsecase(movieEntity);
     result.fold(
@@ -202,7 +200,8 @@ class HomeController extends GetxController {
     );
   }
 
-  _loadDetailsParametes() {
+  void _loadDetailsParametes() {
+    _setState(ViewState.loading);
     _loadMovieDetails(movieSelected);
     _loadRecommendedMovies(movieSelected);
   }

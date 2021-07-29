@@ -7,6 +7,7 @@ class MovieDetailsEntity extends Equatable {
   final posterPath;
   final backdropPath;
   final List<GenresEntity> genres;
+  final String? description;
 
   MovieDetailsEntity({
     required this.id,
@@ -14,6 +15,7 @@ class MovieDetailsEntity extends Equatable {
     required this.posterPath,
     required this.backdropPath,
     required this.genres,
+    required this.description,
   });
 
   @override

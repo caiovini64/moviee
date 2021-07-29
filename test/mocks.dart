@@ -37,6 +37,7 @@ final kMovieDetailsModel = MovieDetailsModel(
   backdropPath: '',
   genres: <GenresModel>[],
   posterPath: '',
+  description: '',
 );
 
 final kMovieDetailsEntity = MovieDetailsEntity(
@@ -45,6 +46,7 @@ final kMovieDetailsEntity = MovieDetailsEntity(
   backdropPath: '',
   genres: <GenresEntity>[],
   posterPath: '',
+  description: '',
 );
 
 final kMovieDetailsResponse =

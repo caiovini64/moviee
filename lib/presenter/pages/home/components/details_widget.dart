@@ -2,44 +2,89 @@ import 'package:flutter/material.dart';
 import 'package:moviee/domain/entities/entities.dart';
 import 'package:moviee/presenter/components/components.dart';
 import 'package:moviee/presenter/pages/home/components/list_movies_widget.dart';
+import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 class DetailsWidget extends StatelessWidget {
-  final MovieDetailsEntity movieDetails;
-  final MovieEntity movieSelected;
-  final List<MovieEntity> listRecommendedMovies;
-  const DetailsWidget({
-    Key? key,
-    required this.movieDetails,
-    required this.movieSelected,
-    required this.listRecommendedMovies,
-  }) : super(key: key);
+  final HomeController controller;
+  const DetailsWidget({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: LayoutBuilder(
         builder: (context, constraints) {
-          print(constraints.maxHeight);
           return Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      height: constraints.maxHeight * 0.7,
-                      child: Center(
-                        child: ImageWidget(
-                          heroKey: movieSelected.id,
-                          url: movieSelected.backdropPath,
-                          imageQuality: 'original',
+                      height: constraints.maxHeight * 0.6,
+                      child: Visibility(
+                        visible:
+                            controller.movieSelectedDetails.backdropPath != '',
+                        child: Center(
+                          child: ImageWidget(
+                            heroKey: controller.movieSelectedDetails.id,
+                            url: controller.movieSelectedDetails.backdropPath,
+                            imageQuality: 'original',
+                          ),
+                        ),
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Container(
+                        height: constraints.maxHeight * 0.6,
+                        width: constraints.maxWidth * 0.4,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              controller.movieSelectedDetails.title,
+                              style: Theme.of(context).textTheme.headline1,
+                            ),
+                            Text(
+                              controller.movieSelectedDetails.description,
+                              style: Theme.of(context).textTheme.headline3,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 20,
+                            ),
+                            Container(
+                              height: 20,
+                              child: Expanded(
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: controller
+                                      .movieSelectedDetails.genres.length,
+                                  itemBuilder: (context, index) {
+                                    final genre = controller
+                                        .movieSelectedDetails.genres[index];
+                                    return Container(
+                                      width: 50,
+                                      color: Theme.of(context).highlightColor,
+                                      child: Text(genre.name),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ],
                 ),
-                // GridMoviesWidget(list: list, controller: controller)
+                GridMoviesWidget(
+                  list: controller.recommendedMoviesList,
+                  controller: controller,
+                  rows: 1,
+                  itemCounts: controller.recommendedMoviesList.length,
+                )
               ],
             ),
           );

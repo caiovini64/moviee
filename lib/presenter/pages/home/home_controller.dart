@@ -75,10 +75,11 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    ever(_pageState, (_) {
+    everAll([_pageState, _movieSelected], (_) {
       print(_pageState.value);
       _loadData();
     });
+
     _loadData();
   }
 
@@ -170,6 +171,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> _loadMovieDetails(MovieEntity movieEntity) async {
+    _setState(ViewState.loading);
     final Either<Failure, MovieDetailsEntity> result =
         await _movieDetailsUsecase(movieEntity);
     result.fold(
@@ -178,6 +180,7 @@ class HomeController extends GetxController {
         failureMessage = failure.message;
       },
       (data) {
+        _setState(ViewState.done);
         movieSelectedDetails = data;
         return movieSelectedDetails;
       },
@@ -185,25 +188,23 @@ class HomeController extends GetxController {
   }
 
   Future<void> _loadRecommendedMovies(MovieEntity movieEntity) async {
+    _setState(ViewState.loading);
     final Either<Failure, List<MovieEntity>> result =
         await _movieRecommendationsUsecase(movieEntity);
     result.fold(
       (failure) {
-        _setState(ViewState.error);
         failureMessage = failure.message;
       },
       (data) {
         recommendedMoviesList.clear();
         recommendedMoviesList.addAll(data);
-        _setState(ViewState.done);
       },
     );
   }
 
   void _loadDetailsParametes() {
-    _setState(ViewState.loading);
-    _loadMovieDetails(movieSelected);
-    _loadRecommendedMovies(movieSelected);
+    _loadRecommendedMovies(movieSelected)
+        .then((value) => _loadMovieDetails(movieSelected));
   }
 
   void tapSideBar() => isSideBarOpen = !isSideBarOpen;

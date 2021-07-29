@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:moviee/domain/entities/entities.dart';
 import 'package:moviee/presenter/components/image/image_widget.dart';
+import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 class GridMoviesWidget extends StatelessWidget {
   final List<MovieEntity> list;
+  final HomeController controller;
   const GridMoviesWidget({
     required this.list,
+    required this.controller,
   });
 
   @override
@@ -27,12 +30,19 @@ class GridMoviesWidget extends StatelessWidget {
               itemCount: 12,
               itemBuilder: (context, index) {
                 final movie = list[index];
-                return Center(
-                  child: Container(
-                    height: constraints.maxHeight / 1,
-                    child: ImageWidget(
-                      url: movie.posterPath,
-                      imageQuality: 'w500',
+                return GestureDetector(
+                  onTap: () {
+                    controller.setMovieSelected(movie);
+                    controller.updatePageState(PageState.details);
+                    print(movie);
+                  },
+                  child: Center(
+                    child: Container(
+                      height: constraints.maxHeight / 1,
+                      child: ImageWidget(
+                        url: movie.posterPath,
+                        imageQuality: 'w500',
+                      ),
                     ),
                   ),
                 );

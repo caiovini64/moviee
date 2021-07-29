@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart';
+import 'package:moviee/presenter/pages/home/components/details_widget.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
 
 import 'widgets.dart';
@@ -42,11 +43,7 @@ class HomeDesktopScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Obx(() {
-                          return GridMoviesWidget(
-                            list: controller.moviesList.toList(),
-                          );
-                        })
+                        buildSinglePage(),
                       ],
                     ),
                   );
@@ -58,5 +55,34 @@ class HomeDesktopScreen extends StatelessWidget {
         );
       },
     );
+  }
+
+  Widget buildSinglePage() {
+    return Obx(() {
+      switch (controller.pageState) {
+        case PageState.home:
+          return GridMoviesWidget(
+            list: controller.moviesList.toList(),
+            controller: controller,
+          );
+        case PageState.info:
+          return GridMoviesWidget(
+            list: controller.moviesList.toList(),
+            controller: controller,
+          );
+        case PageState.favorites:
+          return GridMoviesWidget(
+            list: controller.moviesList.toList(),
+            controller: controller,
+          );
+        case PageState.details:
+          return DetailsWidget();
+        default:
+          return GridMoviesWidget(
+            list: controller.moviesList.toList(),
+            controller: controller,
+          );
+      }
+    });
   }
 }

@@ -13,6 +13,7 @@ enum PageState {
   upcoming,
   nowPlaying,
   info,
+  details,
 }
 
 class HomeController extends GetxController {
@@ -36,11 +37,15 @@ class HomeController extends GetxController {
   final _isSidebarOpen = false.obs;
   final _isMoviesCategoriesSelected = false.obs;
 
+  final _movieSelected =
+      MovieEntity(title: '', backdropPath: '', id: 0, posterPath: '').obs;
+
   String get failureMessage => _failureMessage.value;
   ViewState get viewState => _viewState.value;
   PageState get pageState => _pageState.value;
   bool get isSideBarOpen => _isSidebarOpen.value;
   bool get isMoviesCategoriesSelected => _isMoviesCategoriesSelected.value;
+  MovieEntity get movieSelected => _movieSelected.value;
 
   set failureMessage(message) => _failureMessage.value = message;
   set viewState(state) => _viewState.value = state;
@@ -48,6 +53,7 @@ class HomeController extends GetxController {
   set isSideBarOpen(state) => _isSidebarOpen.value = state;
   set isMoviesCategoriesSelected(newValue) =>
       _isMoviesCategoriesSelected.value = newValue;
+  set movieSelected(movie) => _movieSelected.value = movie;
 
   @override
   void onInit() {
@@ -152,4 +158,6 @@ class HomeController extends GetxController {
 
   void tapMovieCategories() =>
       isMoviesCategoriesSelected = !isMoviesCategoriesSelected;
+
+  void setMovieSelected(MovieEntity movie) => movieSelected = movie;
 }

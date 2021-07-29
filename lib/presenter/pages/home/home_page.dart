@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:moviee/infra/dependencies/injection_container.dart';
-import 'package:moviee/presenter/components/loading_page.dart';
+import 'package:moviee/presenter/components/components.dart';
 import 'package:moviee/presenter/helpers/helpers.dart';
 import 'package:moviee/presenter/pages/home/home_controller.dart';
 import 'package:responsive_builder/responsive_builder.dart';

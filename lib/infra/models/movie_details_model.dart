@@ -8,7 +8,7 @@ class MovieDetailsModel extends MovieDetailsEntity {
     required posterPath,
     required backdropPath,
     required List<GenresModel> genres,
-    required String? description,
+    required String description,
   }) : super(
           id: id,
           title: title,
@@ -25,7 +25,7 @@ class MovieDetailsModel extends MovieDetailsEntity {
       posterPath: json['poster_path'],
       backdropPath: json['backdrop_path'],
       genres: GenresModel.getGenres(json['genres']),
-      description: json['description'] ?? '',
+      description: json['overview'] ?? '',
     );
   }
 }

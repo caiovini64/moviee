@@ -35,9 +35,7 @@ class _ButtonSideBarState extends State<ButtonSideBar> {
         padding: const EdgeInsets.only(top: 20.0),
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10),
-          color: widget.isIndex
-              ? Theme.of(context).primaryColorDark
-              : Theme.of(context).primaryColor,
+          color: Theme.of(context).primaryColor,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -45,7 +43,7 @@ class _ButtonSideBarState extends State<ButtonSideBar> {
                 visible: widget.hasIcon,
                 child: IconButton(
                   icon: Icon(widget.icon),
-                  color: Colors.white,
+                  color: widget.isIndex ? Color(0xff0582CA) : Colors.white70,
                   onPressed: () => widget.onTap(),
                 ),
               ),
@@ -62,7 +60,10 @@ class _ButtonSideBarState extends State<ButtonSideBar> {
                       child: Text(
                         widget.title,
                         style: TextStyle(
-                            color: Colors.white, fontSize: widget.fontSize),
+                            color: widget.isIndex
+                                ? Color(0xff0582CA)
+                                : Colors.white70,
+                            fontSize: widget.fontSize),
                       ),
                     ),
                   ),

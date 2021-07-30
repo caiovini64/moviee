@@ -3,10 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:moviee/external/datasources/authentication_datasource_impl.dart';
 import 'package:moviee/infra/models/models.dart';
 
-void main() {
+void main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
   late AuthenticationDatasource datasource;
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
 
   setUp(() async {
     datasource = AuthenticationDatasource();

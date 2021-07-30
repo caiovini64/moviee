@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:moviee/domain/helpers/failure/failure.dart';
 import 'package:moviee/domain/entities/user_entity.dart';
 import 'package:dartz/dartz.dart';
@@ -17,7 +18,7 @@ class AuthenticationRepository extends IAuthenticationRepository {
       final result =
           await datasource.signInWithEmail(email: email, password: password);
       return Right(result);
-    } on SigninException {
+    } on FirebaseAuthException {
       return Left(SigninFailure());
     }
   }

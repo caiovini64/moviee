@@ -1,0 +1,1 @@
+class SignupException implements Exception {}

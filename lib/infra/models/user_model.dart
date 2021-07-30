@@ -2,7 +2,7 @@ import 'package:moviee/domain/entities/entities.dart';
 
 class UserModel extends UserEntity {
   final String? email;
-  final String id;
+  final String? id;
 
   UserModel({required this.email, required this.id})
       : super(email: email, id: id);

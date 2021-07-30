@@ -4,3 +4,4 @@ export 'nowplaying_movies_repository.dart';
 export 'popular_movies_repository.dart';
 export 'toprated_movies_repository.dart';
 export 'upcoming_movies_repository.dart';
+export 'authentication_repository.dart';

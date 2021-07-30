@@ -4,5 +4,5 @@ import 'package:moviee/domain/helpers/helpers.dart';
 
 abstract class IAuthenticationRepository {
   Future<Either<Failure, UserEntity>> signInWithEmail(
-      {required String email, required String password});
+      {required String? email, required String password});
 }

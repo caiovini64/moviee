@@ -9,7 +9,7 @@ class SignInWithEmailUsecase extends AuthUsecase {
 
   @override
   Future<Either<Failure, UserEntity>> call(
-      {required String email, required String password}) {
+      {required String? email, required String password}) {
     return repository.signInWithEmail(email: email, password: password);
   }
 }

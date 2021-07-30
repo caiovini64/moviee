@@ -13,12 +13,12 @@ class AuthenticationRepository extends IAuthenticationRepository {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithEmail(
-      {required String email, required String password}) async {
+      {required String? email, required String password}) async {
     try {
       final result =
           await datasource.signInWithEmail(email: email, password: password);
       return Right(result);
-    } on FirebaseAuthException {
+    } on SigninException {
       return Left(SigninFailure());
     }
   }

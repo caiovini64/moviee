@@ -1,0 +1,1 @@
+class SigninException implements Exception {}

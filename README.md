@@ -1,16 +1,30 @@
-# moviee
+# Just Movie it
 
-A new Flutter project.
+Just Movie it is an app that's recommended movies from TMDB using clean architecture and Unit Tests in your creation. 
 
-## Getting Started
+Access the web app here: [Just Movie it](https://just-movieit.web.app/)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Functionalities:
+- [ ] The user can sign in to the app 
+- [ ] The user can sign up on the app
+- [ ] The user can sign in as an anonymous
+- [x] The user can view a list of the recommended movies.
+- [x] The user can view an overview of the selected movie.
+- [ ] The user can save movies in a favorite list
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Architecture:
+The app was created from zero following the Clean Architecture for it to be a maintainable project. The app is divided into 4 layers which have unique functionality.
+- **Domain:** It's the heart of the application. In this layer, are the Business Rule which has the smallest possible coupling of libs.
+- **Infra:**  In this layer, implemented the domain contracts and created the contracts which been implemented by the External layer. At the same time is in that layer which the exceptions are handled.
+- **External:** In this layer, are the world external access, in this case, the TMDB API access.
+- **Presenter:** In here are the pages, state management, and widgets of the application.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Main Libraries:
+- [Get_it](https://pub.dev/packages/get_it) - For the Dependency Injection of the project
+- [GetX](https://pub.dev/packages/get) - For the State Management and Route Management of the project
+- [DartZ](https://pub.dev/packages/dartz) - For Functional Programming
+- [Mocktail](https://pub.dev/packages/mocktail) - For the unity tests
+- [Responsive Builder](https://pub.dev/packages/responsive_builder) - To create a responsive UI
+
+#### That app uses Firebase Hosting for the fast deployment and  Continuous Integration as a Single-Page web app.

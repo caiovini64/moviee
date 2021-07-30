@@ -11,11 +11,11 @@ Flutter web, with its beta flag, has already amazing performance and fewer bugs 
 The web page is hosted by Firebase Hosting and the updates occur through the CD of Github Actions with **main** branch.
 
 ## Functionalities:
+- [x] The user can view a list of the recommended movies.
+- [x] The user can view an overview of the selected movie.
 - [ ] The user can sign in to the app 
 - [ ] The user can sign up on the app
 - [ ] The user can sign in as an anonymous
-- [x] The user can view a list of the recommended movies.
-- [x] The user can view an overview of the selected movie.
 - [ ] The user can save movies in a favorite list
 
 ## Architecture:

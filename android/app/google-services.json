@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1040053590761",
+    "project_id": "just-movieit",
+    "storage_bucket": "just-movieit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040053590761:android:13f1ccaba8c5742458ee78",
+        "android_client_info": {
+          "package_name": "app.web.justmovieit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040053590761-96d98c31at5v21c179hv2i6m1lleq272.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.web.justmovieit",
+            "certificate_hash": "41c8d5dcba058c3068c5770127d1ea0c40eae443"
+          }
+        },
+        {
+          "client_id": "1040053590761-49153a96f8js23ngi967p09tvtpanfq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdqWlI4McbXc0QbXvE6e51JsgM3hMIL74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040053590761-49153a96f8js23ngi967p09tvtpanfq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

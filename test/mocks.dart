@@ -50,6 +50,7 @@ final kMovieDetailsEntity = MovieDetailsEntity(
 );
 
 final kUserEntity = UserEntity(id: '22', email: 'email@email');
+final kUserModel = UserModel(id: '22', email: 'email@email');
 
 final kMovieDetailsResponse =
     '''{"id": 1,"original_title": "","genres": [{"id": 18,"name": "Drama"},{"id": 18,"name": "Drama"}],"backdrop_path": "","poster_path": ""}''';

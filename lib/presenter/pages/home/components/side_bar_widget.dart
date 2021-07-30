@@ -143,15 +143,6 @@ class _SideBarWidgetState extends State<SideBarWidget>
                         ),
                       ),
                       ButtonSideBar(
-                        title: 'Favorites',
-                        isIndex: controller.pageState == PageState.favorites,
-                        icon: Icons.favorite,
-                        hasIcon: true,
-                        onTap: () =>
-                            controller.updatePageState(PageState.favorites),
-                        isOpen: controller.isSideBarOpen,
-                      ),
-                      ButtonSideBar(
                         title: 'About',
                         isIndex: controller.pageState == PageState.info,
                         icon: Icons.info,

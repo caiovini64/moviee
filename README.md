@@ -1,17 +1,14 @@
 # Just Movie it
 
-Just Movie it is an app that's recommended movies from TMDB using clean architecture and Unit Tests in your creation. 
+Just Movie it is an app that's recommended movies from TMDB.
+The application was made to put into practice my studies on clean architecture and TDD.
 
 Access the web app here: [Just Movie it](https://just-movieit.web.app/)
 
 
 ## Functionalities:
-- [ ] The user can sign in to the app 
-- [ ] The user can sign up on the app
-- [ ] The user can sign in as an anonymous
-- [x] The user can view a list of the recommended movies.
+- [x] The user can view a list of movies from different categories.
 - [x] The user can view an overview of the selected movie.
-- [ ] The user can save movies in a favorite list
 
 ## Architecture:
 The app was created from zero following the Clean Architecture for it to be a maintainable project. The app is divided into 4 layers which have unique functionality.

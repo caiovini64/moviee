@@ -4,3 +4,4 @@ export 'popular_movies_datasource.dart';
 export 'upcoming_movies_datasource.dart';
 export 'nowplaying_movies_datasource.dart';
 export 'toprated_movies_datasource.dart';
+export 'authentication_datasource.dart';

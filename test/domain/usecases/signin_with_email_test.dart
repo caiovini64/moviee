@@ -26,4 +26,13 @@ void main() {
         await usecase(email: kUserEntity.email, password: 'password');
     expect(result, Right(kUserEntity));
   });
+
+  test('should return a Failure when dont succeed', () async {
+    when(() => repository.signInWithEmail(
+            email: any(named: 'email'), password: any(named: 'password')))
+        .thenAnswer((_) async => Left(ServerFailure()));
+    final result =
+        await usecase(email: kUserEntity.email, password: 'password');
+    expect(result, Left(ServerFailure()));
+  });
 }

@@ -33,6 +33,3 @@ The app was created from zero following the Clean Architecture for it to be a ma
 - [Responsive Builder](https://pub.dev/packages/responsive_builder) - To create a responsive UI
 
 #### That app uses Firebase Hosting for the fast deployment and  Continuous Integration as a Single-Page web app.
-
-## User Comments
-"A confortable place to discover, and save, movies you didn't know you like.", by Raphael. A movie lover and Netflix finisher.

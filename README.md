@@ -24,4 +24,4 @@ The app was created from zero following the Clean Architecture for it to be a ma
 - [Mocktail](https://pub.dev/packages/mocktail) - For the unity tests
 - [Responsive Builder](https://pub.dev/packages/responsive_builder) - To create a responsive UI
 
-#### That app uses Firebase Hosting for the fast deployment and  Continuous Integration as a Single-Page web app.
+#### That app uses Firebase Hosting for the fast deployment and  Continuous Integration as a Single-Page web app. 

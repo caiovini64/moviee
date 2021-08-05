@@ -3,7 +3,7 @@
 Just Movie it is an app that's recommended movies from TMDB.
 The application was made to put into practice my studies on clean architecture and TDD.
 
-Access the web app here: [Just Movie it](https://just-movieit.web.app/)
+Access the web app here: [Just Movie it](https://just-movieit.web.app/) 
 
 
 ## Functionalities:

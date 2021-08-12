@@ -1,12 +1,23 @@
 # Just Movie it
-
-Just Movie it is an app that's recommended movies from TMDB.
-The application was made to put into practice my studies on clean architecture and TDD.
+Just Movie it is an app that's recommended movies from TMDB using clean architecture and Unit Tests in your creation. 
 
 Access the web app here: [Just Movie it](https://just-movieit.web.app/) 
 
 
+# Powered by *FLutter* 💙
+Flutter web, with its beta flag, has already amazing performance and fewer bugs every day. With a bit of effort, this project searches and solves platform problems to have a delightful user experience.
+
+# Powered by *Firebase Hosting* 🧡 with *Github Actions* 🖤
+The web page is hosted by Firebase Hosting and the updates occur through the CD of Github Actions with **main** branch.
+
 ## Functionalities:
+
+- [x] The user can view a list of the recommended movies.
+- [x] The user can view an overview of the selected movie.
+- [ ] The user can sign in to the app 
+- [ ] The user can sign up on the app
+- [ ] The user can sign in as an anonymous
+- [ ] The user can save movies in a favorite list
 - [x] The user can view a list of movies from different categories.
 - [x] The user can view an overview of the selected movie.
 

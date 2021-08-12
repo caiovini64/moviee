@@ -23,6 +23,11 @@ class DetailsWidget extends StatelessWidget {
                     Container(
                       height: constraints.maxHeight * 0.6,
                       child: Visibility(
+                        replacement: Center(
+                          child: CircularProgressIndicator(
+                            color: Theme.of(context).primaryColorDark,
+                          ),
+                        ),
                         visible:
                             controller.movieSelectedDetails.backdropPath != '',
                         child: Center(
@@ -62,7 +67,9 @@ class DetailsWidget extends StatelessWidget {
                                     child: Text(
                                       genre.name,
                                       style: TextStyle(
-                                          fontSize: 10, color: Colors.white),
+                                        fontSize: 10,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   );
                                 },

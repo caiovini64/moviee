@@ -19,7 +19,7 @@ ThemeData appTheme() {
     ),
     headline3: TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w400,
       color: textColor,
     ),
   );
